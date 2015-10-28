@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/views/blog/blog.html=UTF-8
+encoding//WebRoot/WEB-INF/views/common/_layout.html=UTF-8
+encoding//WebRoot/WEB-INF/views/index/index.html=UTF-8
+encoding//WebRoot/WEB-INF/views/peopleGroup/group.html=UTF-8
+encoding//WebRoot/WEB-INF/views/person/person.html=UTF-8
+encoding//src/com/demo/common/DemoConfig.java=UTF-8
+encoding//src/com/demo/index/IndexController.java=UTF-8
+encoding//src/com/giscafer/schedule/general/HomeServlet.java=UTF-8
+encoding//src/com/giscafer/schedule/login/LoginController.java=UTF-8
