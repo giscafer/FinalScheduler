@@ -8,7 +8,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-		/WEB-INF/classes/spring/spring-config.xml
+		<!-- /WEB-INF/classes/spring/spring-config.xml -->
 		/WEB-INF/classes/spring/spring-servlet.xml
 		</param-value>
 	</context-param>
@@ -23,13 +23,13 @@
 		<filter-class>com.jfinal.core.JFinalFilter</filter-class>
 		<init-param>
 			<param-name>configClass</param-name>
-			<param-value>com.demo.common.DemoConfig</param-value>
+			<param-value>com.giscafer.schedule.config.ScheduleConfig</param-value>
 		</init-param>
 	</filter>
 
 	<filter-mapping>
 		<filter-name>jfinal</filter-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 	<servlet>

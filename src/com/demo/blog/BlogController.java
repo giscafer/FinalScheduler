@@ -1,6 +1,10 @@
 package com.demo.blog;
 
+import java.io.IOException;
+
+import com.giscafer.utils.DataSetToJson;
 import com.jfinal.aop.Before;
+import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 
 /**
@@ -36,6 +40,11 @@ public class BlogController extends Controller {
 	public void delete() {
 		Blog.me.deleteById(getParaToInt());
 		redirect("/blog");
+	}
+	@ActionKey("/findBlog")
+	public void findBlog() throws IOException{
+		String result=DataSetToJson.dataTableToJson(Blog.me.find("select * from blog order by id asc"));
+		renderJson(result);
 	}
 }
 
