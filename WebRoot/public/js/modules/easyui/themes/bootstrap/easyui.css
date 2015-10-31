@@ -1262,6 +1262,7 @@
   padding: 1px 2px;
   border-width: 0 0 1px 0;
   border-style: solid;
+  float:right;
 }
 .datagrid-btn-separator {
   float: left;
@@ -1443,7 +1444,7 @@
 .datagrid-mask-msg {
   border-color: #D4D4D4;
 }
-.datagrid-toolbar,
+/*.datagrid-toolbar,*/
 .datagrid-pager {
   background: #F5F5F5;
 }

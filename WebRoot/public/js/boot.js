@@ -26,7 +26,7 @@ var bootPATH = __CreateJSPath("boot.js");
 
 easyui_debugger = true;   
 
-document.write('<link href="' + bootPATH + 'modules/easyui/themes/default/easyui.css" rel="stylesheet" type="text/css" />');
+document.write('<link href="' + bootPATH + 'modules/easyui/themes/bootstrap/easyui.css" rel="stylesheet" type="text/css" />');
 document.write('<link href="' + bootPATH + 'modules/easyui/themes/icon.css" rel="stylesheet" type="text/css" />');
 
 //easyui核心文件

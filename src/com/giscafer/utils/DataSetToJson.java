@@ -16,8 +16,7 @@ public class DataSetToJson {
 		StringBuilder jsonBuilder = new StringBuilder();
 		List<Blog> list=paginate.getList();
 		int totalRow=paginate.getTotalRow();
-		System.out.println("totalRow---"+paginate.getTotalRow());
-		System.out.println("totalpage---"+paginate.getTotalPage());
+		System.out.println(list.get(0));
 		jsonBuilder.append("{\"total\":");
 		jsonBuilder.append(totalRow);
 		jsonBuilder.append(",\"rows\":[");

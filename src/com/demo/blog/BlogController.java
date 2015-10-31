@@ -1,7 +1,15 @@
 package com.demo.blog;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import net.sf.json.JSONArray;
 
 import com.giscafer.utils.DataSetToJson;
 import com.jfinal.aop.Before;
@@ -48,6 +56,28 @@ public class BlogController extends Controller {
 		int page=Integer.parseInt(getPara("page"));
 		String result=DataSetToJson.dataTableToJson(Blog.me.paginate(page, rows));
 		renderJson(result);
+	}
+	/**
+	 * datagrid提交修改数据
+	 * @throws IOException 
+	 * @throws JsonMappingException 
+	 * @throws JsonParseException 
+	 */
+	public void commit() throws JsonParseException, JsonMappingException, IOException{
+		String insertedJson=getPara("inserted");
+		String updatedJson=getPara("updated");
+		String deletedJson=getPara("deleted");
+		//字符串json数组转为json数组对象
+		JSONArray jsonArray = JSONArray.fromObject(insertedJson);  
+        //json数组转List<Map>
+        List<Map<String,Object>> mapListJson = (List)jsonArray;  
+        //Map对象反序列化为Model
+        Iterator<?> it = mapListJson.iterator();  
+        for (int i = 0; i < mapListJson.size(); i++) {  
+            Map<String,Object> map=mapListJson.get(i);  
+            Blog.me.setAttrs(map).save();
+        }  
+		renderJson("{'status':true}");
 	}
 }
 
