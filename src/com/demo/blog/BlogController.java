@@ -1,6 +1,7 @@
 package com.demo.blog;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.giscafer.utils.DataSetToJson;
 import com.jfinal.aop.Before;
@@ -43,7 +44,9 @@ public class BlogController extends Controller {
 	}
 	@ActionKey("/findBlog")
 	public void findBlog() throws IOException{
-		String result=DataSetToJson.dataTableToJson(Blog.me.find("select * from blog order by id asc"));
+		int rows=Integer.parseInt(getPara("rows"));
+		int page=Integer.parseInt(getPara("page"));
+		String result=DataSetToJson.dataTableToJson(Blog.me.paginate(page, rows));
 		renderJson(result);
 	}
 }

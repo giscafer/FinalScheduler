@@ -46,7 +46,8 @@ Main Page Content
 
 -------------------------------- */
 .cd-main-content .content-wrapper {
-  padding: 45px 5% 3em;
+  /*padding: 45px 5% 3em;*/
+  padding-left:0px;
 }
 .cd-main-content .content-wrapper h1 {
   text-align: center;

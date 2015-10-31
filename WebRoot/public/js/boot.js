@@ -31,5 +31,6 @@ document.write('<link href="' + bootPATH + 'modules/easyui/themes/icon.css" rel=
 
 //easyui核心文件
 document.write('<script src="' + bootPATH + 'modules/easyui/jquery.easyui.min.js" type="text/javascript"></script>');
+document.write('<script src="' + bootPATH + 'modules/easyui/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>');
 
 

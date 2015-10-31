@@ -3,6 +3,7 @@ package com.giscafer.utils;
 import java.util.List;
 
 import com.demo.blog.Blog;
+import com.jfinal.plugin.activerecord.Page;
 
 public class DataSetToJson {
 
@@ -11,10 +12,14 @@ public class DataSetToJson {
 	 * @param list
 	 * @return
 	 */
-	public static String dataTableToJson(List list) {
+	public static String dataTableToJson(Page<Blog> paginate) {
 		StringBuilder jsonBuilder = new StringBuilder();
+		List<Blog> list=paginate.getList();
+		int totalRow=paginate.getTotalRow();
+		System.out.println("totalRow---"+paginate.getTotalRow());
+		System.out.println("totalpage---"+paginate.getTotalPage());
 		jsonBuilder.append("{\"total\":");
-		jsonBuilder.append(list.size());
+		jsonBuilder.append(totalRow);
 		jsonBuilder.append(",\"rows\":[");
 		for (int i = 0; i < list.size(); i++) {
 			Blog blog = (Blog) list.get(i);

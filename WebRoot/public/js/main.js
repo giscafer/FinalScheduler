@@ -128,20 +128,24 @@ jQuery(document).ready(function(){
 		scrolling = false;
 	}
 });
-
+/**
+ * 系统界面切换加载
+ * @param  {[type]} ui [description]
+ * @return {[type]}    [description]
+ */
 function loadUI(ui)
 {
 	var title="ID"+ui.length;
 	$("#giscafer_content").empty();
 	if(ui&&ui!="")
-	    ui = Config.hostUrl+'home?template='+ui;
+	    ui = window.hostUrl+'home?template='+ui;
 	var i = document.getElementById("title");
 	if (i == null) {
 		$.post(ui, {
 					"cache" : "11"
 				}, function(data) {
 					if(data != null && data.indexOf("redirect->login")==0){
-						window.location =Config.hostUrl;
+						window.location =window.hostUrl;
 					}
 					$(".workingModel").each(function() {
 								$(this).hide();

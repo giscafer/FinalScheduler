@@ -83,39 +83,35 @@
         </nav>
         <div class="content-wrapper" id="giscafer_content">
             <header class="htmleaf-header">
-                <!-- <h1>
-				终极排班系统界面设计 <span>A Responsive Sidebar Navigation</span>
-			</h1> -->
-                <!-- <div class="htmleaf-links">
-					<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
-					<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Menu-Navigation/201509152576.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
-				</div> -->
+             <h1>
+				终极排班系统界面设计 <span>FinalScheduler</span>
+			</h1>
             </header>
-            <!-- <h1>Responsive Sidebar Navigation</h1> -->
         </div>
         <!-- .content-wrapper -->
     </main>
     <#include "common/include_footer.html"/>
     <script>
+    /*seajs模块化*/
     (function() {
         seajs.config({
             base: "./",
             paths: {
                 'app': 'app',
                 'module': 'public/js/modules',
-                'common': 'common'
+                'common': 'common',
+                'js':'public/js'
             },
             alias: {
-                "jquery": "module/jquery/1.10.1/jquery.js"
+                "jquery": "module/jquery/1.10.1/jquery.js",
+                "easyui": "module/easyui/jquery.easyui.min.js",
             }
         });
         // 加载入口模块
 
-        seajs.use(['jquery', 'public/js/test'], function($) {
-            // console.log('jquery', $)
-            var html = '<h1>终极排班系统界面设计<span>FinalScheduler</span></h1>';
-            $('.htmleaf-header').html('');
-            $('.htmleaf-header').append(html);
+        seajs.use('js/config', function(config) {
+            //设置系统跟路径
+           window.hostUrl=config.options.hostUrl;
         });
 
     })();

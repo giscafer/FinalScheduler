@@ -1,15 +1,74 @@
-<table class="easyui-datagrid" title="Basic DataGrid"
-	style="width:100%;height:550"
-	data-options="singleSelect:true,collapsible:true,pagination:true,
-				pageSize:3,url:'findBlog',method:'get'"><!-- datagrid_data1.json-->
-	<thead>
-		<tr>
-			<th data-options="field:'id',width:100">编号</th>
-			<th data-options="field:'title',width:250">标题</th>
-			<th data-options="field:'content',width:560,align:'center'">内容</th>
-		</tr>
-	</thead>
+<table id="persondg" class="easyui-datagrid" title="人员信息" style="width:100%;height:500px"
+ data-options="rownumbers:true,
+				singleSelect:false,
+				autoRowHeight:false,
+				pagination:true,
+				checkOnSelect:true,
+				pageSize: 2,
+				pageList: [2,10,15], 
+				url:'findBlog',
+				method:'get',
+				loadMsg:'数据加载中，请等待……',
+				toolbar:toolbar">
+    <thead>
+        <tr>
+        	<th data-options="field:'ck',checkbox:true"></th>
+            <th data-options="field:'id',width:100">编号</th>
+            <th data-options="field:'title',width:250">标题</th>
+            <th data-options="field:'content',width:560,align:'center'">内容</th>
+        </tr>
+    </thead>
 </table>
-<script>
-	$.parser.parse();
+<script type="text/javascript">
+/*var toolbar = [{
+    text: '新增',
+    iconCls: 'icon-add',
+    handler: function() {
+        alert('新增')
+    }
+}, {
+    text: '删除',
+    iconCls: 'icon-cut',
+    handler: function() {
+        alert('cut')
+    }
+}, '-', {
+    text: '保存',
+    iconCls: 'icon-save',
+    handler: function() {
+        alert('save')
+    }
+}];
+
+$(function(){
+	 $.parser.parse();
+	//设置分页控件 
+	var dg=$('#persondg');
+	var opts = dg.datagrid('options');
+	 var pager = dg.datagrid('getPager'); 
+	 $(pager).pagination({ 
+	     beforePageText: '第',//页数文本框前显示的汉字 
+	     afterPageText: '页    共 {pages} 页', 
+	     displayMsg: '当前显示 {from} - {to} 条记录；共 {total} 条记录', 
+	     onSelectPage:function(pageNum, pageSize){
+			opts.pageNumber = pageNum;
+			opts.pageSize = pageSize;
+			pager.pagination('refresh',{
+				pageNumber:pageNum,
+				pageSize:pageSize
+			});
+			dg.datagrid('reload');
+		}
+	 }); 
+	// dg.datagrid({
+	//  	url:'findBlog?page=1&rows=3'
+	//  });
+});*/
+var toolbar;
+$(function() {
+    seajs.use('app/person/index', function(person) {
+        toolbar = person.toolbar;
+        $.parser.parse();
+    });
+});
 </script>
