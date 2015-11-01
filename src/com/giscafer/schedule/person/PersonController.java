@@ -13,7 +13,14 @@ import com.giscafer.utils.DataUtils;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
-
+/**
+ * 
+ * @ClassName: PersonController  
+ * @Description: TODO(Person业务逻辑)  
+ * @author giscafer 
+ * @date 2015-11-1 下午5:11:11  
+ *
+ */
 public class PersonController extends Controller{
 	public void index() {
 		setAttr("personPage", Person.me.paginate(getParaToInt(0, 1), 10));
@@ -39,7 +46,7 @@ public class PersonController extends Controller{
 		int rows=Integer.parseInt(getPara("rows"));
 		int page=Integer.parseInt(getPara("page"));
 		Page<Person> personPage=Person.me.paginate(page, rows);
-		String result=DataUtils.dataTableToJson(personPage, Person.me);
+		String result=DataUtils.pageToJson(personPage, Person.me);
 		renderJson(result);
 	}
 	/**

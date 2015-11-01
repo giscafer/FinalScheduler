@@ -6,31 +6,44 @@ define(function(require, exports, module) {
     var editIndex = undefined;
 
     var endEditing = function() {
-            if (editIndex == undefined) {
-                return true
-            }
-            if ($('#persondg').datagrid('validateRow', editIndex)) {
-                var ed = $('#persondg').datagrid('getEditor', {
-                    index: editIndex,
-                    field: 'pid'
-                });
-                // var productname = $(ed.target).combobox('getText');
-                // $('#persondg').datagrid('getRows')[editIndex]['productname'] = productname;
-                $('#persondg').datagrid('endEdit', editIndex);
-                editIndex = undefined;
-                return true;
-            } else {
-                return false;
-            }
+        if (editIndex == undefined) {
+            return true
         }
-        /**
-         * 编辑
-         */
-    exports.editRow = function(index) {
+        if ($('#persondg').datagrid('validateRow', editIndex)) {
+            var ed = $('#persondg').datagrid('getEditor', {
+                index: editIndex,
+                field: 'pid'
+            });
+            // var productname = $(ed.target).combobox('getText');
+            // $('#persondg').datagrid('getRows')[editIndex]['productname'] = productname;
+            $('#persondg').datagrid('endEdit', editIndex);
+            editIndex = undefined;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    var messageShow = function(info) {
+        $.messager.show({
+            title: '提示',
+            msg: info,
+            timeout: 1000,
+            showType: 'fade',
+            style: {
+                right: '',
+                bottom: ''
+            }
+        });
+    };
+
+    exports.editRow = function(index, row) {
             if (editIndex != index) {
                 if (endEditing()) {
-                    $('#persondg').datagrid('selectRow', index)
-                        .datagrid('beginEdit', index);
+                    if (row.lock == 1 && config.options.lockData) {
+                        messageShow('记录被锁定，不可编辑！');
+                        return;
+                    }
+                    $('#persondg').datagrid('selectRow', index).datagrid('beginEdit', index);
                     editIndex = index;
                 } else {
                     $('#persondg').datagrid('selectRow', editIndex);
@@ -54,7 +67,7 @@ define(function(require, exports, module) {
          * 保存修改（编辑和新增）
          */
     var accept = function() {
-            var $dg=$('#persondg');
+            var $dg = $('#persondg');
             if (endEditing()) {
                 var inserted = $dg.datagrid('getChanges', "inserted");
                 // var deleted = $dg.datagrid('getChanges', "deleted");
@@ -91,6 +104,7 @@ define(function(require, exports, module) {
         text: '删除',
         iconCls: 'icon-cut',
         handler: function() {
+            var lockFlag = false;
             var pdg = $("#persondg");
             var rows = pdg.datagrid('getSelections');
             if (!rows.length) {
@@ -100,7 +114,14 @@ define(function(require, exports, module) {
                 for (var i = 0; i < rows.length; i++) {
                     var id = rows[i].pid;
                     url += "/" + id;
+                    if (rows[i].lock == 1) {
+                        lockFlag = true;
+                    }
                 };
+                if (lockFlag && config.options.lockData) {
+                    messageShow('记录被锁定，无法删除！');
+                    return;
+                }
                 $.messager.confirm('删除提醒', '是否确定删除该人员信息?', function(ok) {
                     if (ok) {
                         $.get(url, function(data) {
@@ -128,5 +149,33 @@ define(function(require, exports, module) {
             accept();
         }
     }];
+    /**
+     * 初始化字典值
+     * @return {Array} json数组
+     */
+    exports.initDictData = function(callback) {
+            $.ajax({
+                    url: config.options.hostUrl + 'queryDict?filter=性别',
+                    async: false,
+                    type: 'GET',
+                    dataType: 'json'
+                        // data: {param1: 'value1'},
+                })
+                .done(function(data) {
+                    callback(data);
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+        }
+        /**
+         * 控制lock数据用户不能删除
+         */
+    exports.selectChangeHandler = function(index, row) {
+        if (row.lock == 1) {
 
+        } else {
+
+        }
+    }
 });

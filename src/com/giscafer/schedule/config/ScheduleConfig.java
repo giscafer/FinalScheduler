@@ -1,6 +1,7 @@
 package com.giscafer.schedule.config;
 
 import com.demo.blog.Blog;
+import com.giscafer.schedule.dict.Dict;
 import com.giscafer.schedule.person.Person;
 import com.giscafer.schedule.routes.AdminRoutes;
 import com.giscafer.schedule.routes.FrontRoutes;
@@ -63,6 +64,7 @@ public class ScheduleConfig extends JFinalConfig {
 		//Config config = getConfig();  ActiveRecord调用DbKit的方法,取得DB配置
 		arp.addMapping("blog", Blog.class);	// 映射blog 表到 Blog模型
 		arp.addMapping("gc_schedule_person","pid",Person.class);	// 映射表gc_schedule_person到 Person模型,指定主键为pid,不指定主键将会默认是id
+		arp.addMapping("gc_common_dict",Dict.class);	// 映射表gc_schedule_person到 Person模型,指定主键为pid,不指定主键将会默认是id
 	}
 	
 	/**

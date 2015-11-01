@@ -1,5 +1,6 @@
 package com.giscafer.schedule.routes;
 
+import com.giscafer.schedule.dict.DictController;
 import com.giscafer.schedule.index.IndexController;
 import com.giscafer.schedule.person.PersonController;
 import com.jfinal.config.Routes;
@@ -16,5 +17,6 @@ public class FrontRoutes extends Routes{
 	public void config(){
 		add("/", IndexController.class);
 		add("/person", PersonController.class);
+		add("/dict", DictController.class);
 	}
 }

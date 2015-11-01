@@ -19,7 +19,7 @@ public class DataUtils {
 	 * @param list
 	 * @return
 	 */
-	public static String dataTableToJson(Page<?> paginate,Model<?> model) {
+	public static String pageToJson(Page<?> paginate,Model<?> model) {
 		StringBuilder jsonBuilder = new StringBuilder();
 		System.out.println(paginate);
 		List<?> list=paginate.getList();
@@ -38,9 +38,24 @@ public class DataUtils {
 		jsonBuilder.append("]}");
 		return jsonBuilder.toString();
 	}
-	public static List<?> jsonArray2ModelList(){
-		
-		return null;
+	/**
+	 * list转json
+	 * @param list
+	 * @param model
+	 * @return
+	 */
+	public static String listToJsonStr(List<?> list,Model<?> model){
+		StringBuilder jsonBuilder = new StringBuilder();
+		jsonBuilder.append("[");
+		for (int i = 0; i < list.size(); i++) {
+			model = (Model<?>) list.get(i);
+			//将model转为json
+			jsonBuilder.append(model.toJson());
+			jsonBuilder.append(",");
+		}
+		jsonBuilder.deleteCharAt(jsonBuilder.length()-1);
+		jsonBuilder.append("]");
+		return jsonBuilder.toString();
 		
 	}
 }

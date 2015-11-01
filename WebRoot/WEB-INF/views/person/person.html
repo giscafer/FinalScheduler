@@ -1,5 +1,4 @@
-<table id="persondg" class="easyui-datagrid" title="人员信息" style="width:100%;height:500px"
- data-options="rownumbers:true,
+<table id="persondg" class="easyui-datagrid" title="人员信息" style="width:100%;height:500px" data-options="rownumbers:true,
  				idField:'pid',
 				singleSelect:true,
 				autoRowHeight:false,
@@ -13,11 +12,34 @@
 				toolbar:toolbar">
     <thead>
         <tr>
-        	<th data-options="field:'ck',checkbox:true"></th>
+            <th data-options="field:'ck',checkbox:true"></th>
             <th data-options="field:'name',align:'center',width:200,editor:'text'">姓名</th>
-            <th data-options="field:'sex',width:200,align:'center',editor:'text'">性别</th>
+            <th data-options="field:'sex',width:200,align:'center',formatter:function(value,row){
+						for(var i=0; i<sexDictData.length; i++){
+							if (sexDictData[i].dictCode == value) return sexDictData[i].dictName;
+						}
+						return '未知';
+					},
+					editor:{
+						type:'combobox',
+						options:{
+							valueField:'dictCode',
+                            textField:'dictName',
+                            method:'get',
+							data:sexDictData,
+							required:true
+						}
+					}">性别</th>
             <th data-options="field:'email',width:200,align:'center',editor:'text'">邮箱</th>
             <th data-options="field:'cellphone',width:200,align:'center',editor:'text'">手机号</th>
+            <th data-options="field:'lock',width:200,align:'center',formatter:function(value,row){
+						if (value==1){
+							return '锁定';
+						}else{
+							return '未锁定';
+						}
+						
+					}">状态</th>
         </tr>
     </thead>
 </table>
@@ -66,14 +88,17 @@ $(function(){
 	//  	url:'findBlog?page=1&rows=3'
 	//  });
 });*/
-var toolbar;
+var toolbar, sexDictData;
 $(function() {
     seajs.use('app/person/index', function(person) {
         toolbar = person.toolbar;
+       	person.initDictData(function(result){
+       		 sexDictData = result;
+       	});
         $.parser.parse();
         $('#persondg').datagrid({
-			onDblClickRow: person.editRow
-		});
+            onDblClickRow: person.editRow
+        });
     });
 });
 </script>

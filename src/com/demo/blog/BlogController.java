@@ -54,7 +54,7 @@ public class BlogController extends Controller {
 	public void findBlog() throws IOException{
 		int rows=Integer.parseInt(getPara("rows"));
 		int page=Integer.parseInt(getPara("page"));
-		String result=DataUtils.dataTableToJson(Blog.me.paginate(page, rows), Blog.me);
+		String result=DataUtils.pageToJson(Blog.me.paginate(page, rows), Blog.me);
 		renderJson(result);
 	}
 	/**
