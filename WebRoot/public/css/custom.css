@@ -1,0 +1,775 @@
+/**
+ * FinalScheduler自定义样式
+ * @author:giscafer
+ */
+/* 瀑布流样式start */
+
+.bs-docs-example {
+    position: relative;
+    margin: 0px 15px 15px 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 0px 0px 4px 4px;
+    -moz-border-radius: 0px 0px 4px 4px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.bs-docs-band {
+    position: relative;
+    margin: 0px 15px 0px 15px;
+    height: 30px;
+    padding: 10px 50px 10px 20px;
+    /*  padding-left:  20px;
+ padding-right:  50px; */
+    vertical-align: middle;
+    background-color: #ECEBEB;
+}
+
+#pic-wrapper {
+    margin-bottom: 72px;
+    overflow-x: hidden;
+    text-align: center;
+    width: 100%;
+}
+
+#mp3-wrapper {
+    margin-bottom: 72px;
+    overflow-x: hidden;
+    text-align: center;
+    width: 100%;
+}
+
+.grid-wrapper {
+    margin: 0 auto;
+    position: relative;
+}
+
+.grid-item {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    width: 200px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+}
+
+.item-checkbox {
+    float: left;
+    zoom: 130%;
+}
+
+.grid-item img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.img_block {
+    position: relative;
+    padding: 10px;
+}
+
+.waterfall-zoom,
+.waterfall-ilike {
+    position: absolute;
+    line-height: 25px;
+    padding: 0 0 2px 18px;
+    text-align: center;
+    top: 14px;
+    display: block;
+    text-decoration: none;
+    background: url(../img/custom/pic_ilike.png) no-repeat -200px 0;
+}
+
+.waterfall-zoom {
+    left: 14px;
+    width: 52px;
+    background-position: 0 -71px;
+}
+
+.waterfall-zoom:hover {
+    background-position: 0 -99px;
+}
+
+.waterfall-ilike {
+    right: 14px;
+    width: 57px;
+    background-position: 0 -140px;
+}
+
+.waterfall-ilike:hover {
+    background-position: 0 -167px;
+}
+
+.img_edit,
+.img_edit a.edit {
+    background: url(../img/custom/edit_16.png) 0px 3px no-repeat;
+    padding: 0 0 6px 28px;
+    margin-left: 0px;
+    line-height: 11px;
+}
+
+.img_edit a {
+    margin: 0 0 0px 28px;
+}
+
+.img_edit a.del {
+    background: url(../img/custom/del_16.png) 0px 3px no-repeat;
+    padding: 0 0 6px 28px;
+    line-height: 11px;
+}
+
+.img_edit {
+    margin-top: 2px;
+    background-color: #ECEBEB;
+    background-position: 12px -522px;
+}
+
+.img_edit a {
+    background-position: 12px -550px;
+    text-decoration: none;
+}
+
+.grid-item .info_more {
+    display: none;
+}
+
+.grid-item .info_more p {
+    text-indent: 2em;
+    overflow: ellipsis;
+}
+
+
+/* 瀑布流样式 end */
+
+
+/*排班管理样式*/
+
+.toolbar {
+    text-align: left;
+    /*margin-bottom: 15px;*/
+    /*margin-left: 10px;*/
+    font-size: 14px;
+    height: 30px;
+    background-color: #F2F0FC;
+    padding: 5px;
+    border: 1px solid #E0E4E8;
+}
+
+.btn-toolbar-button,
+.plan_order_btn {
+    float: left;
+    margin: 4px;
+    line-height: 27px!important;
+    background-color: #5BB75B;
+    /*background-image: linear-gradient(to bottom, #62C462, #51A351);*/
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 1px 2px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-toolbar-button[disabled],
+.btn-toolbar-button[disabled]:hover {
+    background-color: gray;
+}
+
+.paiban_title_toolbar,
+{
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+div.paiban_title_toolbar .paiban_button {
+    float: right;
+}
+
+
+/*Page header*/
+
+.page-header {
+    padding-bottom: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-color: #E0E4E8;
+    -moz-box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
+    box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
+}
+
+#plan_order_list {
+    /*width: 650px;*/
+    list-style-type: none;
+    margin: 0px;
+}
+
+#plan_order_list li {
+    float: left;
+    padding: 5px;
+}
+
+.plan_order_config_container {
+    border: 1px solid #E0E4E8;
+    border: 1px solid #E0E4E8;
+    text-align: left;
+    position: absolute;
+    background-color: white;
+    background-color: white;
+}
+
+.placeHolder div {
+    background-color: white !important;
+    border: dashed 1px gray !important;
+}
+
+
+/*--tooltip--*/
+
+.tooltip_icon {
+    background-image: url('../img/custom/tooltip_icon.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 16px;
+    cursor: pointer;
+    height: 16px;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+#bcgl_color_img {
+    width: 80px;
+    height: 25px;
+    display: block;
+    border: 1px solid #d3d3d3;
+}
+
+
+/*
+    分组管理样式 specifics
+------------------------------------------------------------------- */
+
+
+/* Layout */
+
+#center-wrapper {
+    margin: 0 auto;
+    width: 920px;
+}
+
+
+/* Floats */
+
+.fzgl-left {
+    float: left;
+}
+
+.fzgl-right {
+    float: right;
+}
+
+.fzgl-clear,
+.fzgl-clearer {
+    clear: both;
+}
+
+.fzgl-#88F4A2clearer {
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+}
+
+
+/* Columns */
+
+.fzgl-column {
+    margin-top: 20px;
+    margin-right: 2%;
+    width: 30%;
+}
+
+.fzgl-column .fzgl-container-div {
+    width: 100%;
+    overflow-y: auto;
+    height: 280px;
+    border-right: #cccccc solid 1px;
+    border-left: #cccccc solid 1px;
+    border-bottom: #cccccc solid 1px;
+}
+
+.fzgl-column.fzgl-first {
+    margin-left: 0;
+}
+
+
+/* Sortable items */
+
+.sortable-list {
+    background-color: #DAFEDC;
+    list-style: none;
+    margin: 0;
+    min-height: 60px;
+    padding: 10px;
+}
+
+.sortable-item {
+    background-color: #FFF;
+    border: 1px solid #d3d3d3;
+    cursor: move;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 2px 5px 2px 1px;
+    text-align: left;
+}
+
+.sortable-title {
+    background-color: #959595;
+    border: 1px solid #959595;
+}
+
+.group_top {
+    font-size: 1.5em;
+    line-height: 30px;
+    background: #4FBEF5;
+    color: white;
+    cursor: default;
+    padding: 5px 0;
+    display: block;
+}
+
+.group_top .list_item {
+    background-image: url('../img/custom/list_item.png');
+}
+
+.group_name,
+.group_order {
+    background-image: url('../img/custom/list_item.png') no-repeat;
+    margin-left: 3px;
+    display: inline-block;
+}
+
+.group_name_editinput {
+    margin-left: 3px;
+    margin-top: 5px;
+}
+
+.group_operation {
+    display: inline-block!important;
+    margin: 5px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+    background-color: transparent;
+    border: none!important;
+    color: white;
+}
+
+.sortable-list .nurse_order_container {
+    border-right: #cccccc solid 1px;
+    line-height: 26px;
+    text-align: center;
+    font-size: 1.3em;
+    padding: 0;
+    min-width: 28px;
+    display: inline-block;
+    background-color: #9FC569;
+    color: white;
+}
+
+
+/**
+ * 下拉
+ */
+
+.jqx-menu-item-arrow-down {
+    padding-right: 0px;
+    margin-right: 1px;
+    padding-bottom: 10px;
+    width: 50px;
+    height: 15px;
+    background-image: url(../img/custom/icon-down.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    list-style-type: none;
+}
+
+.group_operation_ul li ul {
+    margin: -5px 0 0 0;
+    padding: 0;
+    width: 100px;
+    position: relative;
+    visibility: hidden;
+    background: #A9C251;
+    border-top: 1px solid white
+}
+
+.group_operation_ul li ul li {
+    font-size: 16px;
+    padding: 0;
+    float: none;
+    display: block
+}
+
+.group_operation_ul li ul li a {
+    width: auto;
+    background: #A9C251;
+    color: #24313C
+}
+
+.group_operation_ul li ul li a:hover {
+    background: #8EA344
+}
+
+
+/**
+ * 排班管理样式
+ */
+
+.dib {
+    display: inline-block;
+}
+
+.fr {
+    float: right;
+}
+
+.calendarWrapper {
+    width: 95%;
+    margin: 0 auto 15px;
+}
+
+#jxkh_calendar {
+    width: 1000px;
+    background: #fff;
+    padding: 15px 10px;
+}
+
+#pbgl_calendar {
+    width: 100%;
+    background: #fff;
+    padding: 15px 10px;
+}
+
+#pbgl_calendar table td.tdselected {
+    /*border: 2px solid #ABA0A0;*/
+    background: #FECA40!important;
+    color: black!important;
+}
+
+#pbgl_calendar .schedualitem {
+    border-width: 0;
+    padding: 5px 0;
+    position: relative;
+    height: 10px;
+}
+
+#pbgl_calendar .pbschedualitem {
+    text-align: center;
+    max-width: 85%;
+}
+
+#pbgl_calendar .xhyitem {
+    height: 30px;
+    text-align: center;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+#pbgl_calendar .pbschedualitemclose,
+#pbgl_calendar .pbschedualitemedit {
+    display: none;
+    position: absolute;
+    z-index: 333;
+    top: 0px;
+    right: 0px;
+    width: 15px;
+}
+
+#pbgl_calendar .hisschedualitemedit {
+    right: 15px;
+}
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20)
+}
+
+.close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .4;
+    filter: alpha(opacity=40)
+}
+
+button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none
+}
+
+.calendarWrapper .rightSidePanel {
+    width: 240px;
+    padding: 0px 15px;
+}
+
+#external-events {
+    float: left;
+    width: 150px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+    text-align: left;
+}
+
+#external-events h4 {
+    font-size: 16px;
+    margin-top: 0;
+    padding-top: 1em;
+}
+
+.external-event {
+    /* try to mimick the look of a real event */
+    margin: 10px 0;
+    padding: 2px 4px;
+    background: #3366CC;
+    color: #fff;
+    font-size: .85em;
+    cursor: pointer;
+}
+
+#external-events p {
+    margin: 1.5em 0;
+    font-size: 11px;
+    color: #666;
+}
+
+#external-events p input {
+    margin: 0;
+    vertical-align: middle;
+}
+
+
+/**
+ * 弹出选择层
+ * @type {[type]}
+ */
+
+a.closeBtn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: block;
+    width: 60px;
+    padding: 4px 0;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #85B6E2;
+    color: #333;
+}
+
+a.closeBtn:hover {
+    color: #fff;
+    border: 1px solid #85B6E2;
+    background: #85B6E2;
+}
+
+.blk {
+    border: 1px solid #c4c4c4;
+    text-align: left;
+    position: absolute;
+    background-color: #E7E4F6;
+    width: 250px;
+}
+
+.blk .head,
+.blk .head-right,
+.blk .foot,
+.blk .foot-right {
+    background: url(img/pop_up_bg.png);
+    overflow: hidden;
+    height: 4px;
+}
+
+.blk .head {
+    padding-left: 4px;
+}
+
+.blk .head-right {
+    background-position: right top;
+}
+
+.blk .foot {
+    padding-left: 4px;
+    background-position: left bottom;
+    _height: 3px;
+}
+
+.blk .foot-right {
+    background-position: right bottom;
+}
+
+.blk .main {
+    border: 2px solid #85B6E2;
+    position: relative;
+    background: #fff;
+}
+
+.blk .main h2 {
+    font: bold 16px "Microsoft YaHei";
+    padding: 10px 20px 2px;
+    color: #85B6E2;
+}
+
+.blk .main ul {
+    list-style: none;
+    padding: 20px;
+    zoom: 1;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.blk .main ul li {
+    float: left;
+    width: 100px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.blk .main ul li a {
+    color: #333;
+    display: block;
+}
+
+.blk .main ul li a:hover {
+    background: #85B6E2;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#paiban_toolbar_container,
+#paiban_person_toolbar_container {
+    border: 1px solid #c4c4c4;
+    text-align: left;
+    position: absolute;
+    background-color: #E7E4F6;
+    width: 250px;
+}
+
+#paiban_toolbar_container div {
+    padding: 8px 4px 8px 4px;
+    height: 33px;
+}
+
+.float_button {
+    height: 27px;
+}
+
+.btn-toolbar-button,
+.plan_order_btn {
+    float: left;
+    margin: 4px;
+    line-height: 27px!important;
+    background-color: #5BB75B;
+    /*background-image: linear-gradient(to bottom, #62C462, #51A351);*/
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 1px 2px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.paiban_seperator {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    border-left: 1px solid rgb(185, 193, 248);
+    margin-bottom: 2px;
+}
+
+.btn-toolbar-button[disabled],
+.btn-toolbar-button[disabled]:hover {
+    background-color: gray;
+}
+
+#paiban_toolbar_container .delete_btn {
+    float: left;
+    background: url('../img/icons/Remove.png') no-repeat center center;
+    width: 32px;
+    height: 32px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#paiban_toolbar_container .delete_btn[disabled] {
+    background: url('../img/icons/Remove_disabled.png') no-repeat center center;
+    cursor: default;
+}
+
+.btn-toolbar-button:hover,
+.plan_order_btn:hover {
+    background-color: #388fc9;
+}
+
+
+/* 考勤样式 */
+
+.checkWrapper {
+    margin-right: 10px;
+}
+
+
+.checkWrapper .label {
+    font-size: 11.844px;
+    font-weight: bold;
+    line-height: 14px;
+    color: #fff;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+    background-color: #999;
+}
+
+.checkWrapper .label {
+    padding: 2px 4px 2px;
+}
+
+.checkWrapper .label-success{
+    background-color: #468847
+}
+.help ol{
+    margin-left:25px;
+}
+.help ol li{
+    margin-bottom:7px;
+}
