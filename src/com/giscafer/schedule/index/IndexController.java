@@ -1,4 +1,4 @@
-package com.demo.index;
+package com.giscafer.schedule.index;
 
 import com.jfinal.core.Controller;
 
@@ -8,7 +8,7 @@ import com.jfinal.core.Controller;
 public class IndexController extends Controller {
 	public void index() {
 		render("index.html");
-		setAttr("hellojfinal", "JFinal学习");
+		setAttr("finalshceduler", "终极排班系统");
 	}
 }
 

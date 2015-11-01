@@ -7619,3 +7619,215 @@ java.lang.NullPointerException
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
 	at java.lang.Thread.run(Unknown Source)
+
+2015-11-01 16:11:05
+[ERROR]-[Thread: qtp1713121480-17]-[com.jfinal.core.ActionHandler.handle()]: /commitPerson
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at com.jfinal.aop.Invocation.invoke(Invocation.java:85)
+	at com.jfinal.core.ActionHandler.handle(ActionHandler.java:74)
+	at com.jfinal.ext.handler.UrlSkipHandler.handle(UrlSkipHandler.java:45)
+	at com.jfinal.core.JFinalFilter.doFilter(JFinalFilter.java:72)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1307)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:453)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:560)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1072)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:382)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1006)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:365)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:485)
+	at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:937)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:998)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:856)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:628)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.jfinal.aop.Invocation.invoke(Invocation.java:71)
+	... 26 more
+Caused by: java.lang.NoClassDefFoundError: org/apache/commons/lang/exception/NestableRuntimeException
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$100(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:421)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383)
+	at com.giscafer.schedule.person.PersonController.commit(PersonController.java:59)
+	... 31 more
+Caused by: java.lang.ClassNotFoundException: org.apache.commons.lang.exception.NestableRuntimeException
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383)
+	... 43 more
+
+2015-11-01 16:11:53
+[ERROR]-[Thread: qtp1713121480-17]-[com.jfinal.core.ActionHandler.handle()]: /commitPerson
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at com.jfinal.aop.Invocation.invoke(Invocation.java:85)
+	at com.jfinal.core.ActionHandler.handle(ActionHandler.java:74)
+	at com.jfinal.ext.handler.UrlSkipHandler.handle(UrlSkipHandler.java:45)
+	at com.jfinal.core.JFinalFilter.doFilter(JFinalFilter.java:72)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1307)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:453)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:560)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1072)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:382)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1006)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:365)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:485)
+	at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:937)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:998)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:856)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:628)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.jfinal.aop.Invocation.invoke(Invocation.java:71)
+	... 26 more
+Caused by: java.lang.NoClassDefFoundError: org/apache/commons/lang/exception/NestableRuntimeException
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$100(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:421)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383)
+	at com.giscafer.schedule.person.PersonController.commit(PersonController.java:59)
+	... 31 more
+Caused by: java.lang.ClassNotFoundException: org.apache.commons.lang.exception.NestableRuntimeException
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383)
+	... 43 more
+
+2015-11-01 16:14:14
+[WARN]-[Thread: qtp1119459031-19]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:14:17
+[WARN]-[Thread: qtp1119459031-19]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:14:44
+[WARN]-[Thread: qtp1713121480-20]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:14:45
+[WARN]-[Thread: qtp1713121480-20]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:14:45
+[WARN]-[Thread: qtp1713121480-17]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:16:09
+[WARN]-[Thread: qtp695954606-18]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:16:10
+[WARN]-[Thread: qtp695954606-23]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:16:10
+[WARN]-[Thread: qtp695954606-19]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:16:11
+[WARN]-[Thread: qtp695954606-22]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:16:11
+[WARN]-[Thread: qtp695954606-18]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:16:36
+[WARN]-[Thread: qtp695954606-22]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /
+
+2015-11-01 16:18:21
+[ERROR]-[Thread: qtp695954606-23]-[com.jfinal.core.ActionHandler.handle()]: /commitPerson
+com.jfinal.plugin.activerecord.ActiveRecordException: java.sql.SQLException: Incorrect integer value: 'true' for column 'sex' at row 1
+	at com.jfinal.plugin.activerecord.Model.update(Model.java:491)
+	at com.giscafer.schedule.person.PersonController.commit(PersonController.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.jfinal.aop.Invocation.invoke(Invocation.java:71)
+	at com.jfinal.core.ActionHandler.handle(ActionHandler.java:74)
+	at com.jfinal.ext.handler.UrlSkipHandler.handle(UrlSkipHandler.java:45)
+	at com.jfinal.core.JFinalFilter.doFilter(JFinalFilter.java:72)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1307)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:453)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:560)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1072)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:382)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1006)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116)
+	at org.eclipse.jetty.server.Server.handle(Server.java:365)
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:485)
+	at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:937)
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:998)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:856)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240)
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:628)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.sql.SQLException: Incorrect integer value: 'true' for column 'sex' at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1073)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4096)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4028)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2444)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2362)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2347)
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeUpdate(NewProxyPreparedStatement.java:105)
+	at com.jfinal.plugin.activerecord.DbPro.update(DbPro.java:260)
+	at com.jfinal.plugin.activerecord.Db.update(Db.java:194)
+	at com.jfinal.plugin.activerecord.Model.update(Model.java:484)
+	... 32 more

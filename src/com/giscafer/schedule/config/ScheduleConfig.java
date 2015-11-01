@@ -1,11 +1,7 @@
 package com.giscafer.schedule.config;
 
 import com.demo.blog.Blog;
-import com.demo.blog.BlogController;
-import com.demo.index.BlogIndexController;
-import com.demo.index.IndexController;
 import com.giscafer.schedule.person.Person;
-import com.giscafer.schedule.person.PersonController;
 import com.giscafer.schedule.routes.AdminRoutes;
 import com.giscafer.schedule.routes.FrontRoutes;
 import com.jfinal.config.Constants;
