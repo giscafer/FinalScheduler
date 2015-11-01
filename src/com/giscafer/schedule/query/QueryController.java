@@ -14,7 +14,13 @@ import com.jfinal.plugin.activerecord.Model;
  * 
  */
 public class QueryController extends Controller {
-
+	/**
+	 * 数据查询方法
+	 * @param tableName 表名
+	 * @param queryFilter 查询条件对象
+	 * @param model 表的model对象
+	 * @return List<?>
+	 */
 	public static List<?> find(String tableName, QueryFilter queryFilter,
 			Model<?> model) {
 		String whereString = queryFilter.getWhereString();

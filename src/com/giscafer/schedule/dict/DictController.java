@@ -12,7 +12,7 @@ public class DictController extends Controller{
 
 	public void index(){}
 	/**
-	 * 查询
+	 * 查询字典表翻译
 	 * @throws IOException
 	 */
 	@ActionKey("/queryDict")
