@@ -23,7 +23,7 @@ __CreateJSPath = function (js) {
 
 //bootPath
 var bootPATH = __CreateJSPath("boot.js");
-
+var Giscafer={};
 easyui_debugger = true;   
 
 document.write('<link href="' + bootPATH + 'modules/easyui/themes/bootstrap/easyui.css" rel="stylesheet" type="text/css" />');

@@ -2,6 +2,8 @@ package com.giscafer.schedule.dict;
 
 import java.util.List;
 
+import com.giscafer.schedule.query.QueryController;
+import com.giscafer.schedule.query.QueryFilter;
 import com.jfinal.plugin.activerecord.Model;
 /**
  * 
@@ -15,12 +17,8 @@ import com.jfinal.plugin.activerecord.Model;
 public class Dict extends Model<Dict>{
 
 	public static Dict me=new Dict();
-	public List<Dict> find(String selectFields,String whereString){
-		if("".equals(whereString) || whereString==null) whereString="1=1";
-		if("".equals(selectFields) || selectFields==null) selectFields="*";
-		String selectStr="select "+selectFields;
-		String queryStr=" from gc_common_dict where "+whereString+" order by dictCode asc";
-		return find(selectStr+queryStr);
-		
+	@SuppressWarnings("unchecked")
+	public List<Dict> find(QueryFilter queryFilter){
+		return  (List<Dict>) QueryController.find("gc_common_dict",queryFilter, me);
 	}
 }

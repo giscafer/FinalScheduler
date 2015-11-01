@@ -1,6 +1,7 @@
 package com.giscafer.schedule.routes;
 
 import com.giscafer.schedule.dict.DictController;
+import com.giscafer.schedule.group.GroupController;
 import com.giscafer.schedule.index.IndexController;
 import com.giscafer.schedule.person.PersonController;
 import com.jfinal.config.Routes;
@@ -15,8 +16,9 @@ import com.jfinal.config.Routes;
 public class FrontRoutes extends Routes{
 
 	public void config(){
-		add("/", IndexController.class);
-		add("/person", PersonController.class);
-		add("/dict", DictController.class);
+		add("/", IndexController.class); //首页
+		add("/person", PersonController.class); //人员信息
+		add("/dict", DictController.class); //字典翻译
+		add("/group", GroupController.class); //分组管理
 	}
 }

@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th data-options="field:'ck',checkbox:true"></th>
-            <th data-options="field:'name',align:'center',width:200,editor:'text'">姓名</th>
+            <th data-options="field:'name',align:'center',width:200,editor:{type:'validatebox',options:{required:true}}">姓名</th>
             <th data-options="field:'sex',width:200,align:'center',formatter:function(value,row){
 						for(var i=0; i<sexDictData.length; i++){
 							if (sexDictData[i].dictCode == value) return sexDictData[i].dictName;
@@ -30,7 +30,7 @@
 							required:true
 						}
 					}">性别</th>
-            <th data-options="field:'email',width:200,align:'center',editor:'text'">邮箱</th>
+            <th data-options="field:'email',width:200,align:'center',editor:{type:'validatebox',options:{}}">邮箱</th>
             <th data-options="field:'cellphone',width:200,align:'center',editor:'text'">手机号</th>
             <th data-options="field:'lock',width:200,align:'center',formatter:function(value,row){
 						if (value==1){
