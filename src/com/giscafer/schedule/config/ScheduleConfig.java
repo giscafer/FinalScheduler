@@ -4,6 +4,10 @@ import com.demo.blog.Blog;
 import com.demo.blog.BlogController;
 import com.demo.index.BlogIndexController;
 import com.demo.index.IndexController;
+import com.giscafer.schedule.person.Person;
+import com.giscafer.schedule.person.PersonController;
+import com.giscafer.schedule.routes.AdminRoutes;
+import com.giscafer.schedule.routes.FrontRoutes;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -45,10 +49,8 @@ public class ScheduleConfig extends JFinalConfig {
 	 * 配置路由
 	 */
 	public void configRoute(Routes me) {
-		me.add("/", IndexController.class);
-		me.add("/index", IndexController.class,"/index");	// 第三个参数为该Controller的视图存放路径
-		me.add("/hello", BlogIndexController.class,"/error");
-		me.add("/blog", BlogController.class,"/blog");			// 第三个参数省略时默认与第一个参数值相同，在此即为 "/blog"
+		me.add(new FrontRoutes()); // 前端路由
+		me.add(new AdminRoutes()); // 后端路由
 	}
 	
 	/**
@@ -62,7 +64,9 @@ public class ScheduleConfig extends JFinalConfig {
 		// 配置ActiveRecord插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
 		me.add(arp);
+		//Config config = getConfig();  ActiveRecord调用DbKit的方法,取得DB配置
 		arp.addMapping("blog", Blog.class);	// 映射blog 表到 Blog模型
+		arp.addMapping("gc_schedule_person","pid",Person.class);	// 映射表gc_schedule_person到 Person模型,指定主键为pid,不指定主键将会默认是id
 	}
 	
 	/**
@@ -81,7 +85,7 @@ public class ScheduleConfig extends JFinalConfig {
 	}
 	
 	/**
-	 * 建议使用 JFinal 手册推荐的方式启动项目
+	 * 使用jetty-server-XXX.jar
 	 * 运行此 main 方法可以启动项目，此main方法可以放置在任意的Class类定义中，不一定要放于此
 	 */
 	public static void main(String[] args) {

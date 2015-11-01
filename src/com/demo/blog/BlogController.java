@@ -11,7 +11,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import net.sf.json.JSONArray;
 
-import com.giscafer.utils.DataSetToJson;
+import com.giscafer.utils.DataUtils;
 import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
@@ -54,7 +54,7 @@ public class BlogController extends Controller {
 	public void findBlog() throws IOException{
 		int rows=Integer.parseInt(getPara("rows"));
 		int page=Integer.parseInt(getPara("page"));
-		String result=DataSetToJson.dataTableToJson(Blog.me.paginate(page, rows));
+		String result=DataUtils.dataTableToJson(Blog.me.paginate(page, rows), Blog.me);
 		renderJson(result);
 	}
 	/**
@@ -64,20 +64,34 @@ public class BlogController extends Controller {
 	 * @throws JsonParseException 
 	 */
 	public void commit() throws JsonParseException, JsonMappingException, IOException{
+		boolean result=false;
 		String insertedJson=getPara("inserted");
 		String updatedJson=getPara("updated");
-		String deletedJson=getPara("deleted");
-		//字符串json数组转为json数组对象
-		JSONArray jsonArray = JSONArray.fromObject(insertedJson);  
-        //json数组转List<Map>
-        List<Map<String,Object>> mapListJson = (List)jsonArray;  
-        //Map对象反序列化为Model
-        Iterator<?> it = mapListJson.iterator();  
-        for (int i = 0; i < mapListJson.size(); i++) {  
-            Map<String,Object> map=mapListJson.get(i);  
-            Blog.me.setAttrs(map).save();
-        }  
-		renderJson("{'status':true}");
+//		String deletedJson=getPara("deleted");
+		if(insertedJson!=null && !insertedJson.equals("")){
+			//字符串json数组转为json数组对象
+			JSONArray jsonArray = JSONArray.fromObject(insertedJson);  
+	        //json数组转List<Map>
+	        List<Map<String,Object>> mapListJson = (List)jsonArray;  
+	        //Map对象反序列化为Model
+	        Blog blog=null;
+	        for (int i = 0; i < mapListJson.size(); i++) {  
+	            Map<String,Object> map=mapListJson.get(i);  
+	            blog=new Blog();
+	            result=blog.setAttrs(map).save();
+	        }  
+		}
+		if(updatedJson!=null && !updatedJson.equals("")){
+			JSONArray updatedJsonArray = JSONArray.fromObject(updatedJson);  
+	        List<Map<String,Object>> updatedListJson = (List)updatedJsonArray;  
+	        Blog updateBlog=null;
+	        for (int i = 0; i < updatedListJson.size(); i++) {  
+	            Map<String,Object> map=updatedListJson.get(i);  
+	            updateBlog=new Blog();
+	            result=updateBlog.setAttrs(map).update();
+	        }  
+		}
+		renderJson(result);
 	}
 }
 
