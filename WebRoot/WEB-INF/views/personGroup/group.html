@@ -1,172 +1,31 @@
 <div>
 <div class="paiban_title_toolbar btn-toolbar toolbar">
     <div id="plan_operation_container" class="paiban_button">
-        <button type="button" id="fzgl_dragStart" class="fore-common-btn" onclick="Giscafer.fzglStartEdit();">开始编辑</button>
-        <button type="button" id="fzgl_dragSave" class="fore-common-btn" style="display:none;" onclick="Giscafer.fzglSaveEdit(1);">保存编辑</button>
-        <button id="fzgl_add_group" class="fore-common-btn" onclick="Giscafer.fzglNewGroup();">添加分组</button>
-        <button id="fzgl_resetBtn" class="fore-common-btn" onclick="Giscafer.fzglResetGroup();">重置分组</button>
+        <button type="button" id="group_editBtn" class="btn btn-default btn-sm">开始编辑</button>
+        <button type="button" id="group_saveBtn" class="btn btn-default btn-sm" style="display:none;">保存编辑</button>
+        <button id="group_addBtn" class="btn btn-default btn-sm">添加分组</button>
+        <button id="group_resetBtn" class="btn btn-danger btn-sm" >重置分组</button>
     </div>
 </div>
-<div style="overflow-y:auto;" id="fzgl_main_container">
+<div style="overflow-y:auto;" id="group_main_container">
     <div id="group_dateTime" class="page-header" style="margin-left:40px;margin-right:50px;">
         <h4>人员分组</h4>
     </div>
-    <div id="fzgl_container" style="margin-left:40px;margin-right:50px;">
-        <!-- 
-        <div class="fzgl-column fzgl-left">
-             <div class="group_top">
-                <a class="list_item"></a>
-                <div class="group_order">[3]</div>
-                <div class="group_name">管护站3</div>
-                <span>(<span class="group_people_count">4</span> 人 )</span>
-                <div class="group_operation" id="jqxWidget0c495b62137d">
-                    <ul  style="display:none;">
-                        <li style="width: 38px; float: left;"class="jqx-menu-item-arrow-down">
-                            </span><a href="#">操作</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <ul class="sortable-list">
-                <li class="sortable-item" id="E">Sortable item E</li>
-            </ul>
-        </div> -->
+    <div id="group_container" style="margin-left:40px;margin-right:50px;">
     </div>
     <div class="clearer">&nbsp;</div>
 </div>
 </div>
 <script>
-// setGridHeightAuto("fzgl_main_container", -20);
-jQuery(document).ready(function($) {
-    Forestar.App.pbglWidget.instance.getItemsFormFZGL();
-    mini.fsUtil.disableBtn($('#fzgl_add_group'));
-    mini.fsUtil.disableBtn($('#fzgl_resetBtn'));
-});
-Giscafer.fzglNewGroup=function(){
-    Forestar.App.pbglWidget.instance.newGroup();
-}
-/**
- * 分组排序（这并不是一个坑）
- * @param  {[type]} event
- * @param  {[type]} ui    [description]
- * @return {[type]}       [description]
- */
-function fzglChangeNum(event, ui) {
-    var srcCount,disCount;
-    if (ui.sender) { //判断原先来的坑是否有值
-        //目标坑
-        var p = ui.item.parent();
-        p.find('li').each(function() {
-            var indexNum = p.find('li').index(this);
-            $(this).find(".nurse_order_container").text(indexNum + 1);
-            disCount=$(this).parent().parent().parent();
-        });
-        //重新计算目标坑数量
-        var pcount=p.find('li').length;
-        var $pcount=disCount.find('.group_people_count');
-        $pcount.html(pcount);
-        //原坑
-        var senderp = ui.sender.parent();
-            senderp.find('li').each(function() {
-            var indexNum = senderp.find('li').index(this);
-            $(this).find(".nurse_order_container").text(indexNum+1);//-2
-            srcCount=$(this).parent().parent().parent();
-        });
-       //重新计算原坑数量
-        var csenderp=senderp.find('li').length;
-        var $csenderp=srcCount.find('.group_people_count');
-        $csenderp.html(csenderp);
-    } else { //如果没有目标坑
-        var p = ui.item.parent();
-        p.find('li').each(function() {
-            var indexNum = p.find('li').index(this);
-            $(this).find(".nurse_order_container").text(indexNum + 1);
 
-        });
-    }
-}
-//获取分组内容
-function getFzglItems(exampleNr) {
-    //序列化 sortable 的项目 id 为一个字符串的数组
-    var columns = $(exampleNr + ' ul.sortable-list').sortable("toArray");
-    return columns.join("|");
-}
-
-Giscafer.fzglStartEdit = function() {
-    $("#fzgl_dragSave").show();
-    $("#fzgl_dragStart").hide();
-    //可拖动
-    $("#fzgl_container .sortable-list").sortable("enable");
-    $(".group_operation ul").show();
-    mini.fsUtil.enableBtn($('#fzgl_add_group'));
-    mini.fsUtil.enableBtn($('#fzgl_resetBtn'));
-}
-Giscafer.fzglSaveEdit = function(type) {
-    
-    $("#fzgl_container .fzgl-column").each(function(index, el) {
-        var id = $(el).attr('id')
-        var objectId = id.replace(/fzgl-column-/, "");
-        var columns = getFzglItems("#" + id);
-        Forestar.App.pbglWidget.instance.fzglSaveItems(objectId, columns);
+$(function() {
+    seajs.use('common/util',function(Util){
+        Util.disableBtn($('#group_addBtn'));
+        Util.disableBtn($('#group_resetBtn'));
     });
-    if(type===1){
-        //不可拖动
-        $("#fzgl_container .sortable-list").sortable("disable");
-        $("#fzgl_dragStart").show();
-        $("#fzgl_dragSave").hide();
-        mini.fsUtil.disableBtn($('#fzgl_add_group'));
-        mini.fsUtil.disableBtn($('#fzgl_resetBtn'));
-        $(".group_operation ul").hide();
-        mini.alert("分组保存成功!", 1500);
-    }
-}
-Giscafer.fzglResetGroup = function() {
-        mini.confirm("是否重置分组（重置后恢复为现有管护站分组）？", "重置提醒",
-            function(action) {
-                if (action == "ok") {
-                    var delFilter = {};
-                    delFilter.whereString = "1=1";
-
-                    ajaxDataService.del("XHGL_XHGL_PBGL_FZGL_TB", delFilter, function(res) {
-                        if (res) {
-                            $("#fzgl_dragStart").show();
-                            $("#fzgl_dragSave").hide();
-                            $(".group_operation ul").hide();
-                            mini.fsUtil.disableBtn($('#fzgl_resetBtn'));
-                            mini.fsUtil.disableBtn($('#fzgl_add_group'));
-                            Forestar.App.pbglWidget.instance.getItemsFormFZGL();
-                        } else {
-                            mini.alert("重置失败！", "提示", 2000, null);
-                        }
-                    });
-
-                } else {
-                    return false;
-                }
-            }
-        );
-    }
-    //菜单事件
-function fzgljsddm_open() {
-    // fzgljsddm_canceltimer();
-    fzgljsddm_close();
-     // $(this).find('ul').eq(0).css('visibility', 'visible');
-     Giscafer.fzglDdmenuitem =$(this).find('ul').eq(0).css('visibility', 'visible');
-}
-
-function fzgljsddm_close() {
-    if (Giscafer.fzglDdmenuitem) ].fzglDdmenuitem.css('visibility', 'hidden');
-}
-
-/*function fzgljsddm_timer() {
-    Giscafer.fzglClosetimer = window.setTimeout(fzgljsddm_close, 500);
-}
-
-function fzgljsddm_canceltimer() {
-    if (Giscafer.fzglClosetimer) {
-        window.clearTimeout(Giscafer.fzglClosetimer);
-        Giscafer.fzglClosetimer = null;
-    }
-}*/
-document.onclick = fzgljsddm_close;
+    seajs.use('app/personGroup/index', function(index) {
+      index.getGroupInfoFromDB();
+      index.init();
+    });
+});
 </script>

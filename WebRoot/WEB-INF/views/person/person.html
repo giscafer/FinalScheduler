@@ -44,50 +44,6 @@
     </thead>
 </table>
 <script type="text/javascript">
-/*var toolbar = [{
-    text: '新增',
-    iconCls: 'icon-add',
-    handler: function() {
-        alert('新增')
-    }
-}, {
-    text: '删除',
-    iconCls: 'icon-cut',
-    handler: function() {
-        alert('cut')
-    }
-}, '-', {
-    text: '保存',
-    iconCls: 'icon-save',
-    handler: function() {
-        alert('save')
-    }
-}];
-
-$(function(){
-	 $.parser.parse();
-	//设置分页控件 
-	var dg=$('#persondg');
-	var opts = dg.datagrid('options');
-	 var pager = dg.datagrid('getPager'); 
-	 $(pager).pagination({ 
-	     beforePageText: '第',//页数文本框前显示的汉字 
-	     afterPageText: '页    共 {pages} 页', 
-	     displayMsg: '当前显示 {from} - {to} 条记录；共 {total} 条记录', 
-	     onSelectPage:function(pageNum, pageSize){
-			opts.pageNumber = pageNum;
-			opts.pageSize = pageSize;
-			pager.pagination('refresh',{
-				pageNumber:pageNum,
-				pageSize:pageSize
-			});
-			dg.datagrid('reload');
-		}
-	 }); 
-	// dg.datagrid({
-	//  	url:'findBlog?page=1&rows=3'
-	//  });
-});*/
 var toolbar, sexDictData;
 $(function() {
     seajs.use('app/person/index', function(person) {
