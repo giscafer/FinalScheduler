@@ -1,0 +1,83 @@
+.bigpicker{
+    width:227px;
+    height:163px;	
+    position: absolute;
+    z-index: 9999;
+    background-color: #F0F0F0;
+    padding: 2px 0 1px 5px;
+    border-left: solid 1px #CCCCCC;
+    border-top: solid 1px #CCCCCC;
+    border-right: solid 1px #565656;
+    border-bottom: solid 1px #565656;
+    display: none;
+}
+.bigpicker-sections-color{
+	margin: 0;
+    padding: 0;
+}
+
+.bigpicker-sections-color ul{
+	margin: 0;
+    padding: 0;
+    float: left;
+}
+.bigpicker-sections-color ul li{
+	list-style: none outside none;
+	margin: 0;
+    padding: 0;
+    border-top:solid 1px #000000;
+    border-left:solid 1px #000000;
+	width:10px;
+	height: 10px; 
+	overflow:hidden;
+	line-height:0px;
+	font-size:0px;	
+}
+
+
+.bigpicker .biglayout{
+    width:10px;
+    height:10px;
+    border:solid 1px #FFFFFF;
+    position: absolute;
+    z-index: 10000;
+    display: none;
+    line-height: 10px;
+    overflow: hidden;
+    cursor: default;
+}
+
+.bigpicker-bgview-text{
+	margin: 0;
+    padding: 0;
+    height: 24px;
+}
+.bigpicker-bgview-text li{
+	padding: 0 5px 0 0 ;
+	list-style: none outside none;
+	float: left;
+	line-height:18px;
+}
+
+.bigpicker-bgview-text li div{
+	margin: 0;
+    padding: 0;		
+	height: 20px;
+	width: 55px;
+	background-color: #000000;
+    border-left: solid 1px #CCCCCC;
+    border-top: solid 1px #CCCCCC;
+    border-right: solid 1px #2B2B2B;
+    border-bottom: solid 1px #2B2B2B;
+}
+.bigpicker-bgview-text li input{
+	margin: 0;
+    padding: 0;	
+    height: 17px;
+    width: 55px;
+}
+
+.bigpicker-bgimage{
+	background-image:url(../images/custom/big_bgcolor.jpg);
+}
+
