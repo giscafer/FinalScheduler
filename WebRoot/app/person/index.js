@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var config = require('js/config');
     var editIndex = undefined;
 
-    var endEditing = function() {
+    function endEditing() {
         if (editIndex == undefined) {
             return true
         }
@@ -23,7 +23,7 @@ define(function(require, exports, module) {
             return false;
         }
     }
-    var messageShow = function(info) {
+     function messageShow(info) {
         $.messager.show({
             title: '提示',
             msg: info,
@@ -53,7 +53,7 @@ define(function(require, exports, module) {
         /**
          * 新增
          */
-    var append = function() {
+   function append() {
             if (endEditing()) {
                 $('#persondg').datagrid('appendRow', {
                     name: '新人员'
@@ -66,7 +66,7 @@ define(function(require, exports, module) {
         /**
          * 保存修改（编辑和新增）
          */
-    var accept = function() {
+    function accept() {
             var $dg = $('#persondg');
             if (endEditing()) {
                 var inserted = $dg.datagrid('getChanges', "inserted");
@@ -155,7 +155,7 @@ define(function(require, exports, module) {
      */
     exports.initDictData = function(callback) {
             $.ajax({
-                    url: config.options.hostUrl + 'queryDict?filter=性别',
+                    url: config.options.hostUrl + 'queryDict?filter=encodeURIComponent("性别")',
                     async: false,
                     type: 'GET',
                     dataType: 'json'
