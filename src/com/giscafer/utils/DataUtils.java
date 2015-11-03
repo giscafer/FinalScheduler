@@ -46,6 +46,9 @@ public class DataUtils {
 	 */
 	public static String listToJsonStr(List<?> list,Model<?> model){
 		StringBuilder jsonBuilder = new StringBuilder();
+		if(list.size()==0){
+			return "[]";
+		}
 		jsonBuilder.append("[");
 		for (int i = 0; i < list.size(); i++) {
 			model = (Model<?>) list.get(i);

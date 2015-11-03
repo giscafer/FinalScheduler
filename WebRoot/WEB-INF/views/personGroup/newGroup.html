@@ -1,0 +1,16 @@
+<div class="modal-body">
+   <input type="text" class="form-control" placeholder="请输入分组名称" id="groupNewName">
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="newGroupCloseBtn">
+        关闭
+    </button>
+    <button type="button" class="btn btn-primary" id="newGroupSaveBtn">
+        保存
+    </button>
+</div>
+<script>
+	seajs.use('app/personGroup/index',function(index){
+		index.initAddNewGroupSave();
+	});
+</script>

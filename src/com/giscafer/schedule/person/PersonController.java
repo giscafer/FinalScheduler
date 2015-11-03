@@ -9,6 +9,7 @@ import net.sf.json.JSONArray;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 
+import com.giscafer.schedule.query.QueryFilter;
 import com.giscafer.utils.DataUtils;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
@@ -38,15 +39,34 @@ public class PersonController extends Controller{
 		renderJson(result);
 	}
 	/**
-	 * 查询
+	 * 分页查询
 	 * @throws IOException
 	 */
-	@ActionKey("/findPerson")
-	public void findPerson() throws IOException{
+	@ActionKey("/pageSelectPerson")
+	public void pageSelectPerson() throws IOException{
 		int rows=Integer.parseInt(getPara("rows"));
 		int page=Integer.parseInt(getPara("page"));
 		Page<Person> personPage=Person.me.paginate(page, rows);
 		String result=DataUtils.pageToJson(personPage, Person.me);
+		renderJson(result);
+	}
+	/**
+	 * 分页查询
+	 * @throws IOException
+	 */
+	@ActionKey("/queryPerson")
+	public void queryPerson() throws IOException{
+		QueryFilter queryFilter=new QueryFilter();
+		if(getPara()==null){
+			queryFilter.setWhereString("1=1");
+		}else{
+			queryFilter.setWhereString(getPara());
+		}
+		System.out.println(getPara());//传参方式分隔符为“/”
+		queryFilter.setSelectFields("*");
+		queryFilter.setOrderString("pid desc");
+		List<Person> dictList=Person.me.find(queryFilter);
+		String result=DataUtils.listToJsonStr(dictList, Person.me);
 		renderJson(result);
 	}
 	/**

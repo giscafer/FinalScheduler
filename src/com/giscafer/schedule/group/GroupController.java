@@ -5,11 +5,13 @@ import java.util.Map;
 
 import net.sf.json.JSONArray;
 
-import com.giscafer.schedule.group.Group;
 import com.giscafer.schedule.query.QueryFilter;
 import com.giscafer.utils.DataUtils;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Db;
+
+import data.general.UpdateFilter;
 
 public class GroupController extends Controller{
 	
@@ -53,5 +55,33 @@ public class GroupController extends Controller{
 		}
 		renderJson(result);
 	}
-
+	/**
+	 * 删除
+	 */
+	@ActionKey("delGroupById")
+	public void deleteById(){
+		boolean result=Group.me.deleteById(getParaToInt());
+		renderJson(result);
+	}
+	/**
+	 * 清空表数据
+	 */
+	@ActionKey("delAllGroup")
+	public void deleteAll(){
+		int result=Group.me.deleteAll();
+		renderJson(result);
+	}
+	/**
+	 * 更新
+	 */
+	@ActionKey("updateGroup")
+	public void update(){
+		String setFields=getPara("setFields");
+		String whereString=getPara("whereString");
+		UpdateFilter updateFilter=new UpdateFilter();
+		updateFilter.setSetFields(setFields);
+		updateFilter.setWhereString(whereString);
+		int result=Group.me.update(updateFilter);
+		renderJson(result);
+	}
 }

@@ -1,5 +1,9 @@
 package com.giscafer.schedule.person;
 
+import java.util.List;
+
+import com.giscafer.schedule.query.QueryController;
+import com.giscafer.schedule.query.QueryFilter;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 /**
@@ -19,5 +23,9 @@ public class Person extends Model<Person>{
 	public Page<Person> paginate(int pageNumber, int pageSize) {
 		Page<Person> pagePerson=paginate(pageNumber, pageSize, "select * ", "from gc_schedule_person order by pid desc");
 		return pagePerson;
+	}
+	@SuppressWarnings("unchecked")
+	public List<Person> find(QueryFilter queryFilter){
+		return  (List<Person>) QueryController.find("gc_schedule_person",queryFilter, me);
 	}
 }
