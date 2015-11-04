@@ -1,31 +1,36 @@
+/**
+ * 通用工具类
+ * @author giscafer
+ * @version 1.0
+ * @date    2015-11-04T22:29:32+0800
+ */
 define(function(require,exports,module){
-	//datagrid自适应函数,尚未封装成类，仅是一种临时的解决方案
-	exports.setGridHeightAuto=function(gridId, dx) {
-	    //获取head logo的高度
-	    var headHeight = $(".zs-top").height();
-	    //获取一级菜单高度，注意：一级菜单有时候和log栏在重叠在一起，不用额外计算菜单栏高度
-	    var menuHeight = $(".zs-top").height();
-	    var locationHeight = $(".zs-location").height();
-	    //50表示grid表格toolbar栏的高度
-	    var winHeight = $(window).height() - headHeight - locationHeight - 70;
+	/**
+	 * 设置窗口高度
+	 * @param   {String}                 winId 窗口id
+	 * @param   {Number}                 dx     可调高度值
+	 */
+	exports.initWinHeight=function(winId, dx) {
+	    var navbarH = $(".navbar").height();
+	    var winH = $(window).height() - navbarH;
 	    if (dx) {
-	        winHeight = winHeight + dx;
+	        winH = winH + dx;
 	    }
-	    $("#" + gridId).css({
-	        height: winHeight
+	    $("#" + winId).css({
+	        height: winH
 	    });
 	    window.onresize = function() {
-	        var locationHeight = $(".zs-location").height();
-	        var winHeight = $(window).height() - $(".fore-2d3d-head").height() - $(".fore-2d3d-menu").height() + 30 - locationHeight;
+	        var navbarH = $(".navbar").height();
+	        var winH = $(window).height() - navbarH;
 	        if (dx) {
-	            winHeight = winHeight + dx;
+	            winH = winH + dx;
 	        }
-	        $("#" + gridId).css({
-	            height: winHeight
+	        $("#" + winId).css({
+	            height: winH
 	        });
 	    }
 	}
-		//按钮变灰
+	//按钮变灰
 	exports.disableBtn=function(btn){
 		for(var i=0; i<arguments.length; i++)
 			$(arguments[i]).attr('disabled','disabled')

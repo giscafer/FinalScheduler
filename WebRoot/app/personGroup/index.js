@@ -185,6 +185,7 @@ define(function(require, exports, module) {
     function buildGroupListHtml(obj, i) {
         var order = obj.order,
             groupName = obj.groupName,
+            shortGroupName=groupName.length>10?(groupName.substring(0,10)+".."):groupName;
             firstStr = "",
             gid = obj.gid,
             divClass = "fzgl-column fzgl-left fzgl-first",
@@ -203,8 +204,8 @@ define(function(require, exports, module) {
             firstStr = "";
         }
         var html = '<div class="' + divClass + '" id="fzgl-column-' + gid + '"><div class="group_top">' +
-            '<a class="list_item"></a><div class="group_order">【' + (i + 1) + '】</div><div class="group_name" id="group_name_' + gid + '">' +
-            groupName + '</div><span>(<span class="group_people_count">' + people_count + '</span> 人 )</span>' +
+            '<a class="list_item"></a><div class="group_order">【' + (i + 1) + '】</div><div class="group_name" title="'+groupName+'" id="group_name_' + gid + '">' +
+            shortGroupName + ' </div><span>(<span class="group_people_count">' + people_count + '</span> 人 )</span>' +
             '<div class="group_operation"><ul style="display:none;" class="group_operation_ul">' +
             '<li style="float: left;"class="jqx-menu-item-arrow-down"><a href="#">操作</a>' +
             '<ul style="visibility: hidden;" id="' + gid + '">' +

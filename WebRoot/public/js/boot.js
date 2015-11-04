@@ -27,7 +27,7 @@ var Giscafer={};
 easyui_debugger = true;   
 //排班插件；和easyui冲突，需要置前
 document.write('<script src="' + bootPATH + 'modules/jquery/jquery.dragsort-0.5.2.min.js" type="text/javascript"></script>');
-document.write('<script src="' + bootPATH + 'modules/jquery/modules/jquery/jquery.bigcolorpicker.min.js" type="text/javascript"></script>');
+document.write('<script src="' + bootPATH + 'modules/jquery/jquery.bigcolorpicker.min.js" type="text/javascript"></script>');
 document.write('<script src="' + bootPATH + 'modules/jquery/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>');
 
 //easyui核心文件
@@ -36,10 +36,14 @@ document.write('<script src="' + bootPATH + 'modules/easyui/locale/easyui-lang-z
 
 //bootstrap
 document.write('<link href="' + bootPATH + 'modules/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />');
-document.write('<script src="' + bootPATH + 'modules/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>');
 
 //easyui样式，放在bootstrap后边，避免被覆盖
 document.write('<link href="' + bootPATH + 'modules/easyui/themes/default/easyui.css" rel="stylesheet" type="text/css" />');
 document.write('<link href="' + bootPATH + 'modules/easyui/themes/icon.css" rel="stylesheet" type="text/css" />');
+//<link rel="stylesheet" type="text/css" href="public/css/theme.css">
+//<link rel="stylesheet" href="public/font-awesome/css/font-awesome.css">
+//避免主题样式被覆盖
+document.write('<link href="public/css/theme.css" rel="stylesheet" type="text/css" />');
+document.write('<link href="public/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />');
 
 

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>终极排班系统</title>
+   <#include "common/include_head.html"/>
+    <!-- Modernizr -->
+    <!--[if IE]>
+		<script src="public/js/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <header class="cd-main-header">
+        <a href="./" class="cd-logo"><span
+			style="font-size:24px;color:white">终极排班系统</span>
+		</a>
+        <!-- <img src="img/cd-logo.svg" alt="Logo"> -->
+        <!-- <div class="cd-search is-hidden">
+		 	<form action="#0">
+		 		<input type="search" placeholder="Search...">
+		 	</form>
+		 </div> -->
+        <!-- cd-search -->
+        <a href="#0" class="cd-nav-trigger">Menu<span></span>
+		</a>
+        <nav class="cd-nav">
+            <ul class="cd-top-nav">
+                <li><a href="#0">教程</a>
+                </li>
+                <li><a href="#0">支持</a>
+                </li>
+                <li class="has-children account">
+                    <a href="#0"> <img src="public/img/cd-avatar.png" alt="avatar"> 账号 </a>
+                    <ul>
+                        <li><a href="#0">我的账号</a>
+                        </li>
+                        <li><a href="#0">编辑账号</a>
+                        </li>
+                        <li><a href="#0">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- .cd-main-header -->
+    <main class="cd-main-content">
+        <nav class="cd-side-nav">
+            <ul>
+                <li class="cd-label">功能菜单</li>
+                <li class="has-children comments"><a href="#0" onclick="loadUI('WEB-INF/views/person/person.html')">人员信息</a></li>
+                <li class="has-children users"><a href="#0" onclick="loadUI('WEB-INF/views/personGroup/group.html')">人员分组</a></li>
+                <li class="has-children overview"><a href="#0">排班设置</a>
+                    <ul>
+                        <li><a href="#0">岗位设置</a>
+                        </li>
+                        <li><a href="#0">班次设置</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-children bookmarks"><a href="#0">排班管理</a></li>
+                <li class="has-children bookmarks"><a href="#0">考勤统计</a></li>
+                <li class="has-children images"><a href="#0">统计报表</a>
+                    <ul>
+                        <li><a href="#0">人员统计</a>
+                        </li>
+                        <li><a href="#0">工作报表</a>
+                        </li>
+                        <li><a href="#0">休假报表</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>
+                <li class="cd-label">作者</li>
+                <li class="action-btn"><a href="https://github.com/giscafer" target="_blank">©2015 giscafer</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="content-wrapper" id="giscafer_content">
+            <header class="htmleaf-header">
+             <h1>
+				终极排班系统界面设计 <span>FinalScheduler</span>
+			</h1>
+            </header>
+        </div>
+        <!-- .content-wrapper -->
+    </main>
+    <#include "common/include_footer.html"/>
+</body>
+
+</html>

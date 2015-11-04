@@ -1,35 +1,31 @@
-<div>
-<div class="paiban_title_toolbar btn-toolbar toolbar">
-    <div id="plan_operation_container" class="paiban_button">
+<div class="header">
+    <div class="stats">
         <button type="button" id="group_editBtn" class="btn btn-default btn-sm">开始编辑</button>
         <button type="button" id="group_saveBtn" class="btn btn-default btn-sm" style="display:none;">保存编辑</button>
         <button id="group_addBtn" class="btn btn-default btn-sm">添加分组</button>
-        <button id="group_resetBtn" class="btn btn-danger btn-sm" >重置分组</button>
+        <button id="group_resetBtn" class="btn btn-danger btn-sm">重置分组</button>
     </div>
+    <h1 class="page-title">人员分组</h1>
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a> </li>
+        <li class="active">人员分组</li>
+    </ul>
 </div>
 <div style="overflow-y:auto;" id="group_main_container">
-    <div id="group_dateTime" class="page-header" style="margin-left:40px;margin-right:50px;">
-        <h4>人员分组</h4>
-    </div>
     <div id="group_container" style="margin-left:40px;margin-right:50px;">
     </div>
     <div class="clearer">&nbsp;</div>
 </div>
-<!-- <button class="btn btn-primary" id="laohoubin" type="button">点击我</button>
-</div> -->
 <script>
-
 $(function() {
-/*    $("#laohoubin").click(function(){
-        $("#themodal").modal();
-    });*/
-    seajs.use('common/util',function(Util){
+    seajs.use(['common/util','app/personGroup/index'], function(Util,index) {
+        //
+        Util.initWinHeight("group_main_container",-180);
         Util.disableBtn($('#group_addBtn'));
         Util.disableBtn($('#group_resetBtn'));
-    });
-    seajs.use('app/personGroup/index', function(index) {
-      index.getGroupInfoFromDB();
-      index.init();
+        //
+        index.getGroupInfoFromDB();
+        index.init();
     });
 });
 </script>
