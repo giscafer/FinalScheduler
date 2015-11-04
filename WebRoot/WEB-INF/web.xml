@@ -34,7 +34,7 @@
 
 	<servlet>
 		<servlet-name>HomeServlet</servlet-name>
-		<servlet-class>com.giscafer.schedule.general.HomeServlet</servlet-class>
+		<servlet-class>com.giscafer.general.HomeServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>HomeServlet</servlet-name>

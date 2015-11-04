@@ -1,4 +1,4 @@
-<#macro paginate currentPage totalPage actionUrl urlParas="">
+<#macro paginate currentPage totalPage actionUrl ui urlParas="">
 	<#if (totalPage <= 0) || (currentPage > totalPage)><#return></#if>
 	<#local startPage = currentPage - 4>
 	<#if (startPage < 1)><#local startPage = 1></#if>
@@ -6,7 +6,7 @@
 	<#local endPage = currentPage + 4>
 	<#if (endPage > totalPage)><#local endPage = totalPage></#if>
 	
-	<div class="pagination">
+	<ul class="pagination">
 			<#if (currentPage <= 8)>
 				<#local startPage = 1>
 			</#if>
@@ -15,35 +15,51 @@
 			</#if>
 			
 			<#if (currentPage == 1)>
-				<span class="disabled prev_page">上页</span>
+				<li class="disabled">
+			      <a href="#" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+				</li>
 			<#else>
-				<a href="${actionUrl}#{currentPage - 1}${urlParas!}" class="prev_page">上页</a>
+				<li>
+			      <a href="#" aria-label="Previous" onclick="loadUIAndRender('${actionUrl}','${ui}&pno=${currentPage - 1}')">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+				</li>
 			</#if>
 			
 			<#if (currentPage > 8)>
-				<a href="${actionUrl}#{1}${urlParas!}">#{1}</a>
-				<a href="${actionUrl}#{2}${urlParas!}">#{2}</a>
-				<span class="gap">…</span>
+				<li><a href="#" onclick="loadUIAndRender('${actionUrl}','${ui}&pno=${1}')">#{1}</a></li>
+				<li><a href="#" onclick="loadUIAndRender('${actionUrl}','${ui}&pno=${2}')">#{2}</a></li>
+				<li><a href="#" class="gap">…</a></li>
 			</#if>
 			
 			<#list startPage..endPage as i>
 				<#if currentPage == i>
-					<span class="current">#{i}</span>
+					<li class="active"><a href="#">#{i}<span class="sr-only">(current)</span></a></li>
 				<#else>
-					<a href="${actionUrl}#{i}${urlParas!}">#{i}</a>
+					<li><a href="#" onclick="loadUIAndRender('${actionUrl}','${ui}&pno=${i}')">#{i}</a><li>
 				</#if>
 			</#list>
 			
 			<#if ((totalPage - currentPage) >= 8)>
-				<span class="gap">…</span>
-				<a href="${actionUrl}#{totalPage - 1}${urlParas!}">#{totalPage - 1}</a>
-				<a href="${actionUrl}#{totalPage}${urlParas!}">#{totalPage}</a>
+				<li><a href="#" class="gap">…</a></li>
+				<li><a href="#" onclick="loadUIAndRender('${actionUrl}','${ui}&pno=${totalPage - 1}')">#{totalPage - 1}</a><li>
+				<li><a href="#" onclick="loadUIAndRender('${actionUrl}','${ui}&pno=${totalPage}')">#{totalPage}</a><li>
 			</#if>
 			
 			<#if (currentPage == totalPage)>
-				<span class="disabled next_page">下页</span>
+				<li class="disabled">
+				      <a href="#" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
 			<#else>
-				<a href="${actionUrl}#{currentPage + 1}${urlParas!}" class="next_page" rel="next">下页</a>
+				<li>
+				      <a href="#" aria-label="Next" onclick="loadUIAndRender('${actionUrl}','${ui}&pno=${currentPage + 1}')" >
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>
 			</#if>
-	</div>
+	</ul>
 </#macro>

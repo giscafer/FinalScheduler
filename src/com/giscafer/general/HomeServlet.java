@@ -1,4 +1,4 @@
-package com.giscafer.schedule.general;
+package com.giscafer.general;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -16,20 +16,22 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 
-
+/**
+ * 
+ * @ClassName: HomeServlet  
+ * @Description: TODO(UI界面切换)  
+ * @author giscafer 
+ * @date 2015-11-4 下午11:37:23  
+ *
+ */
+@SuppressWarnings("serial")
 public class HomeServlet extends HttpServlet {
 
 	private Configuration configuration = null;
-	/**
-	 * Constructor of the object.
-	 */
 	public HomeServlet() {
 		super();
 	}
 
-	/**
-	 * Destruction of the servlet. <br>
-	 */
 	public void destroy() {
 		super.destroy(); // Just puts "destroy" string in log
 	}
@@ -38,16 +40,8 @@ public class HomeServlet extends HttpServlet {
 			throws ServletException, IOException {
         doPost(request, response);
 	}
-
 	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
+	 * 使用freemarker方式读取文档
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -72,11 +66,6 @@ public class HomeServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
 	public void init() throws ServletException {
 		configuration = new Configuration();
 		configuration.setServletContextForTemplateLoading(getServletContext(),"");

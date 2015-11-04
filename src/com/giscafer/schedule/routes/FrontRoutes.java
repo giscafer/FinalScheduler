@@ -4,6 +4,7 @@ import com.giscafer.schedule.dict.DictController;
 import com.giscafer.schedule.group.GroupController;
 import com.giscafer.schedule.index.IndexController;
 import com.giscafer.schedule.person.PersonController;
+import com.giscafer.schedule.plan.PlanController;
 import com.jfinal.config.Routes;
 /**
  * 
@@ -20,5 +21,6 @@ public class FrontRoutes extends Routes{
 		add("/person", PersonController.class); //人员信息
 		add("/dict", DictController.class); //字典翻译
 		add("/group", GroupController.class); //分组管理
+		add("/plan", PlanController.class,"/planset"); //班次管理
 	}
 }
