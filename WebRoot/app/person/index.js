@@ -155,7 +155,7 @@ define(function(require, exports, module) {
      */
     exports.initDictData = function(callback) {
             $.ajax({
-                    url: config.options.hostUrl + 'queryDict?filter=encodeURIComponent("性别")',
+                    url: config.options.hostUrl + 'queryDict?filter='+encodeURIComponent("性别"),
                     async: false,
                     type: 'GET',
                     dataType: 'json'

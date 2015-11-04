@@ -49,7 +49,6 @@ $(function() {
     seajs.use('app/person/index', function(person) {
         toolbar = person.toolbar;
        	person.initDictData(function(result){
-       		debugger;
        		 sexDictData = result;
         	$.parser.parse();
        	});
