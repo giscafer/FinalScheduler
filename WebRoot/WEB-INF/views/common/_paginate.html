@@ -61,5 +61,9 @@
 				      </a>
 				    </li>
 			</#if>
+			
 	</ul>
+	<#if totalRows??>
+		<ul  style="float:right;list-style:none;"><li>（共${totalRows}条记录）</li></ul>
+			</#if>
 </#macro>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Page;
 
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
@@ -49,7 +50,10 @@ public class PlanController extends Controller {
 		if(pno!=null){
 			pageNumber=Integer.parseInt(pno);
 		}
-		root.put("planPage", Plan.me.paginate(pageNumber, 10));
+		Page<Plan> page=Plan.me.paginate(pageNumber, 10);
+		int rowNumber=page.getTotalRow();
+		root.put("totalRows", rowNumber);
+		root.put("planPage", page);
 		if (request.getParameter("template") != null)
 			template = request.getParameter("template");
 		ClassTemplateLoader ctl = new ClassTemplateLoader(this.getClass(), "/");
@@ -67,6 +71,30 @@ public class PlanController extends Controller {
 			e.printStackTrace();
 		}
 		
+		renderNull();
+	}
+	
+	public void add() {
+	}
+	
+//	@Before(PlanValidator.class)
+	public void save() {
+		getModel(Plan.class).save();
+		redirect("/blog");
+	}
+	
+	public void edit() {
+		setAttr("blog", Plan.me.findById(getParaToInt()));
+	}
+	
+//	@Before(PlanValidator.class)
+	public void update() {
+		getModel(Plan.class).update();
+		redirect("/blog");
+	}
+	public void delete() {
+		Plan.me.deleteById(getParaToInt());
+//		index();
 		renderNull();
 	}
 }

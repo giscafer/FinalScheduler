@@ -79,3 +79,9 @@ function loadUIAndRender(route,ui)
 		})
 	}
 }
+function gcGet(url,callback){
+	$.get(url, function(data) {
+		if(typeof callback==="function")
+			callback(data);
+	});
+}

@@ -316,7 +316,7 @@ div.paiban_title_toolbar .paiban_button {
 /* Sortable items */
 
 .sortable-list {
-    background-color: #DAFEDC;
+    background-color: #ECF3ED;
     list-style: none;
     margin: 0;
     min-height: 60px;
@@ -342,7 +342,7 @@ div.paiban_title_toolbar .paiban_button {
 .group_top {
     font-size: 1.5em;
     line-height: 30px;
-    background: #4FBEF5;
+    background: #5BC0DE;
     color: white;
     cursor: default;
     padding: 5px 0;
