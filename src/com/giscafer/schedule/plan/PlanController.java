@@ -73,7 +73,7 @@ public class PlanController extends Controller {
 	// @Before(PlanValidator.class)
 	public void update() {
 		String insertedJson=getPara("updated");
-		System.out.println(insertedJson);
+//		System.out.println(insertedJson);
 		boolean result=DataService.update(insertedJson, Plan.class);
 		renderJson(result);
 	}

@@ -8,19 +8,19 @@
         <div class="col-sm-8">
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane active" id="home">
-                    <form id="updatePlanForm" class="form-horizontal" action="">
+                    <form id="updatePlanForm" class="form-horizontal" >
                         <br>
                         <div class="form-group">
-                            <input type="hidden" id="inputPid" name="plan.pid" value="${(result.pid)!}" />
+                            <input type="hidden" id="inputPid" value="${(result.pid)!}" />
                             <label for="inputColor" class="col-sm-2 control-label">颜色</label>
                             <div class="col-sm-6">
-                                <input type="text" id="inputColor" name="plan.color" value="${(result.color)!}" class="form-control" placeholder="班次颜色">
+                                <input type="text" id="inputColor" value="${(result.color)!}" class="form-control" placeholder="班次颜色">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">班次名称</label>
                             <div class="col-sm-6">
-                                <input type="text" id="inputPlanName" name="plan.planName" value="${(result.planName)!}" class="form-control">
+                                <input type="text" id="inputPlanName" value="${(result.planName)!}" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">班次类型</label>
                             <div class="col-sm-6">
-                                <select  name="plan.planType" value="${(result.planType)!}" id="inputPlanType" class=" form-control">
+                                <select value="${(result.planType)!}" id="inputPlanType" class=" form-control">
                                     <option value="1">工作</option>
                                     <option value="2">非工作</option>
                                     <option value="3">其他</option>
@@ -57,14 +57,14 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">总时间（小时）</label>
                             <div class="col-sm-6">
-                                <input type="text" id="inputTotalTime" name="plan.totalTime" disabled value="${(result.totalTime)!}" class="form-control">
+                                <input type="text" id="inputTotalTime"  disabled value="${(result.totalTime)!}" class="form-control">
                             </div>
                         </div>
-                        <div class="btn-toolbar list-toolbar">
-                            <button class="btn btn-primary" id="updatePlanBtn"><i class="fa fa-save"></i> 保存</button>
+                    </form>
+                     <div class="btn-toolbar list-toolbar">
+                            <button class="btn btn-primary" id="updatePlanBtnn"><i class="fa fa-save"></i> 保存</button>
                             <a href="#myModal" data-toggle="modal" class="btn btn-danger">删除</a>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -77,12 +77,11 @@ $(document).ready(function($) {
     var planType = $("#DropDownPlanType").attr("value");
     $("#DropDownPlanType").val(planType);
     seajs.use('app/planset/index',function(index){
-    	$("#updatePlanBtn").click(function(){
+    	$("#updatePlanBtnn").click(function(){
     		index.updatePlan();
     	});
     })
 });
-
 /*$('#BtnCodeStr').selectpicker({
     noneSelectedText: "==请选择==",
 });

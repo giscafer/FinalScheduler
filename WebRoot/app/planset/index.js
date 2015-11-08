@@ -9,7 +9,7 @@ define(function(require,exports,module){
 	/**
 	 * 编辑班次保持
 	 */
-	exports.updatePlan=function(){
+	exports.updatePlan=function(callback){
 		var pid=$("#inputPid").val();
 		var color=$("#inputColor").val();
 		var planName=$("#inputPlanName").val();
@@ -29,13 +29,14 @@ define(function(require,exports,module){
 			"totalTime":totalTime,
 		}
 		var objJson=JSON.stringify(new Array(obj));
-		$.post(hostUrl+'plan/update', {"updated":objJson}, function(data, textStatus, xhr) {
-			if(textStatus=="success"){
-				loadUIAndRender('plan','WEB-INF/views/planset/plan.html');
-			}else{
-
-			}
-		});
+		
+		var effectPlan= {"updated":objJson};
+		var url=hostUrl+'plan/update';
+		$.post(url, effectPlan, function(res) {
+            if (res) {
+            	loadUIAndRender('plan','WEB-INF/views/planset/plan.html');
+            }
+        }, "JSON");
 		
 	}
 });
