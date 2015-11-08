@@ -1,1 +1,100 @@
-edit.html
+<#include "../common/_contentHeader.html"/>
+<@layout location="编辑班次" subLocation="<a href='#' onclick=\" loadUIAndRender( 'plan', 'WEB-INF/views/planset/plan.html')\">班次设置</a> / ${(result.planName!)}" />
+<div class="main-content">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#home" data-toggle="tab">修改</a></li>
+    </ul>
+    <div class="row">
+        <div class="col-sm-8">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <form id="updatePlanForm" class="form-horizontal" action="">
+                        <br>
+                        <div class="form-group">
+                            <input type="hidden" id="inputPid" name="plan.pid" value="${(result.pid)!}" />
+                            <label for="inputColor" class="col-sm-2 control-label">颜色</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="inputColor" name="plan.color" value="${(result.color)!}" class="form-control" placeholder="班次颜色">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">班次名称</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="inputPlanName" name="plan.planName" value="${(result.planName)!}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">定义类型</label>
+                            <div class="col-sm-6">
+                                <select value="${(result.defineType)!}" disabled id="inputDefineType" class="form-control">
+                                    <option value="1">系统定义</option>
+                                    <option value="2">自定义</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">班次类型</label>
+                            <div class="col-sm-6">
+                                <select  name="plan.planType" value="${(result.planType)!}" id="inputPlanType" class=" form-control">
+                                    <option value="1">工作</option>
+                                    <option value="2">非工作</option>
+                                    <option value="3">其他</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">开始时间</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="inputStartTime" value="${(result.periodTime)!}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">结束时间</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="inputEndTime" value="${(result.periodTime)!}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">总时间（小时）</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="inputTotalTime" name="plan.totalTime" disabled value="${(result.totalTime)!}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="btn-toolbar list-toolbar">
+                            <button class="btn btn-primary" id="updatePlanBtn"><i class="fa fa-save"></i> 保存</button>
+                            <a href="#myModal" data-toggle="modal" class="btn btn-danger">删除</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function($) {
+    var defineType = $("#DropDownDefineType").attr("value");
+    $("#DropDownDefineType").val(defineType);
+    var planType = $("#DropDownPlanType").attr("value");
+    $("#DropDownPlanType").val(planType);
+    seajs.use('app/planset/index',function(index){
+    	$("#updatePlanBtn").click(function(){
+    		index.updatePlan();
+    	});
+    })
+});
+
+/*$('#BtnCodeStr').selectpicker({
+    noneSelectedText: "==请选择==",
+});
+$.ajax({
+    url: "/BaseMenu/getBtn",
+    dataType: "json",
+    success: function(data) {
+        for (var i = 0; i < data.length; i++) {
+            $('#BtnCodeStr').append("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+        }
+    }
+});
+$('.selectpicker').selectpicker('refresh');
+*/
+</script>
