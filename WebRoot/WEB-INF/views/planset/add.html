@@ -1,8 +1,8 @@
 <#include "../common/_contentHeader.html"/>
-<@layout location="编辑班次" subLocation="<a href='#' onclick=\" loadUIAndRender( 'plan', 'WEB-INF/views/planset/plan.html')\">班次设置</a> / ${(result.planName!)}" />
+<@layout location="新增班次" subLocation="<a href='#' onclick=\"loadUIAndRender( 'plan', 'WEB-INF/views/planset/plan.html')\">班次设置</a> / 新增班次" />
 <div class="main-content">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#home" data-toggle="tab">修改</a></li>
+        <li class="active"><a href="#home" data-toggle="tab">新增</a></li>
     </ul>
     <div class="row">
         <div class="col-sm-8">
@@ -11,7 +11,6 @@
                     <#include "_form.html"/>
                      <div class="btn-toolbar list-toolbar">
                             <button class="btn btn-primary" id="updatePlanBtnn"><i class="fa fa-save"></i> 保存</button>
-                            <a href="#myModal" data-toggle="modal" class="btn btn-danger">删除</a>
                         </div>
                 </div>
             </div>
@@ -20,17 +19,12 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function($) {
-    var defineType = $("#inputDefineType").attr("value");
-    $("#inputDefineType").val(defineType);
-    var planType = $("#inputPlanType").attr("value");
-    $("#inputPlanType").val(planType);
-    $("#bcgl_color_img").css("background-color",$("#inputColor").attr("value"));
-    var periodTime=$("#inputPeriodTime").attr("value").split("-");
-    $('#inputStartTime').val(periodTime[0]);
-    $('#inputEndTime').val(periodTime[1]);
+    $("#inputDefineType").val(2);
+    $("#inputPlanType").val(1);
+    //保存
     seajs.use('app/planset/index',function(index){
         $("#updatePlanBtnn").click(function(){
-            index.updatePlan();
+            index.addPlan();
         });
     });
      //配色

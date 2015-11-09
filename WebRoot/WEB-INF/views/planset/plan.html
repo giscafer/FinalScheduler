@@ -2,14 +2,14 @@
 <@layout location="班次设置" subLocation="班次设置"/>
 <div class="main-content" id="plan-content">
 <div class="btn-toolbar list-toolbar">
-    <button class="btn btn-primary"><i class="fa fa-plus"></i> 新增</button>
+    <button class="btn btn-primary" onclick="addPlan()"><i class="fa fa-plus"></i> 新增</button>
     <button class="btn btn-default">导入</button>
     <button class="btn btn-default">导出</button>
   <div class="btn-group">
   </div>
 </div>
 <div class="table_box">
-	<table class="table table-hover">
+	<table class="table table-condensed">
 		<tbody>
 			<tr>
 				<th style="text-align:center;" width="4%">#</th>
@@ -24,15 +24,21 @@
 			<#list resultPage.getList() as x>
 			<tr>
 				<td style="text-align:center;">${(x.pid)!}</td>
-				<td style="text-align:center;">${(x.color)!}</td>
+				<td style="text-align:center;"><span href="javascript:void(0)" style="background-color:${(x.color)!}" class="form-control"></span></td>
 				<td style="text-align:center;">${(x.planName)!}</td>
 				<td style="text-align:center;">${(x.defineType)!}</td>
 				<td style="text-align:center;">${(x.planType)!}</td>
 				<td style="text-align:center;">${(x.periodTime)!}</td>
 				<td style="text-align:center;">${(x.totalTime)!}</td>
 				<td style="text-align:center;">
-					&nbsp;&nbsp;<a href="#delModal" data-toggle="modal" onclick="setPlanDelPid(${(x.pid)!})">删除</a>
-					&nbsp;&nbsp;<a href="#" onclick="setPlanModifiedPid(${(x.pid)!})">修改</a>
+				<#if x.defineType==2>
+					&nbsp;&nbsp;<span class="disabled"><a href="#delModal" data-toggle="modal" onclick="setPlanDelPid(${(x.pid)!})">删除</a></span>
+					&nbsp;&nbsp;<span class="disabled"><a href="#" onclick="setPlanModifiedPid(${(x.pid)!})">修改</a></span>
+				<#else>
+					<!-- &nbsp;&nbsp;<span class="disabled">删除</span>
+					&nbsp;&nbsp;<span class="disabled">修改</span> -->
+					<span class="disabled">锁定</span> 
+				</#if>	
 				</td>
 			</tr>
 			</#list>
@@ -74,5 +80,8 @@
 	}
 	function setPlanModifiedPid(pid){
 		loadUIAndRender('plan/edit','WEB-INF/views/planset/edit.html&pid='+pid);
+	}
+	function addPlan(){
+		loadUIAndRender('plan/add','WEB-INF/views/planset/add.html');
 	}
 </script>

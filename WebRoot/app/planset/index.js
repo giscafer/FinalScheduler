@@ -18,7 +18,7 @@ define(function(require,exports,module){
 		var startTime=$("#inputStartTime").val();
 		var endTime=$("#inputEndTime").val();
 		var totalTime=$("#inputTotalTime").val();
-		var periodTime="";
+		var periodTime=$("#inputPeriodTime").val();
 		var obj={
 			"pid":pid,
 			"color":color,
@@ -37,6 +37,9 @@ define(function(require,exports,module){
             	loadUIAndRender('plan','WEB-INF/views/planset/plan.html');
             }
         }, "JSON");
+		
+	};
+	exports.addPlan=function(){
 		
 	}
 });

@@ -30,7 +30,6 @@ import freemarker.template.Template;
  */
 public class PlanController extends Controller {
 
-	private Configuration configuration = null;
 
 	public void index() {
 		HttpServletRequest request = getRequest();
@@ -38,7 +37,12 @@ public class PlanController extends Controller {
 		renderPlanIndex(request,response,10);
 		renderNull();
 	}
-
+	/**
+	 * 分页查询渲染plan首页
+	 * @param request
+	 * @param response
+	 * @param pageSize
+	 */
 	public void renderPlanIndex(HttpServletRequest request,HttpServletResponse response,int pageSize) {
 		int pageNumber = 1;
 		// 获取分页参数
@@ -58,7 +62,9 @@ public class PlanController extends Controller {
 		getModel(Plan.class).save();
 		redirect("/blog");
 	}
-
+	/**
+	 * 编辑
+	 */
 	public void edit() {
 		Map<String, Serializable> root = new HashMap();
 		HttpServletRequest request = getRequest();
@@ -69,7 +75,9 @@ public class PlanController extends Controller {
 		GeneralController.renderTemplate(request, response, root);
 		renderNull();
 	}
-
+	/**
+	 * 更新
+	 */
 	// @Before(PlanValidator.class)
 	public void update() {
 		String insertedJson=getPara("updated");
@@ -77,9 +85,21 @@ public class PlanController extends Controller {
 		boolean result=DataService.update(insertedJson, Plan.class);
 		renderJson(result);
 	}
-
+	/**
+	 * 删除
+	 */
 	public void delete() {
 		Plan.me.deleteById(getParaToInt());
+		renderNull();
+	}
+	/**
+	 * 添加
+	 */
+	public void add(){
+		Map<String, Serializable> root = new HashMap();
+		HttpServletRequest request = getRequest();
+		HttpServletResponse response = getResponse();
+		GeneralController.renderTemplate(request, response, root);
 		renderNull();
 	}
 }
