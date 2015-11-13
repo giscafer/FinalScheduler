@@ -9,7 +9,7 @@
   </div>
 </div>
 <div class="table_box">
-	<table class="table table-condensed">
+	<table class="table table-hover table-bordered  table-condensed table-striped">
 		<tbody>
 			<tr>
 				<th style="text-align:center;" width="4%">#</th>
@@ -26,8 +26,8 @@
 				<td style="text-align:center;">${(x.pid)!}</td>
 				<td style="text-align:center;"><span href="javascript:void(0)" style="background-color:${(x.color)!}" class="form-control"></span></td>
 				<td style="text-align:center;">${(x.planName)!}</td>
-				<td style="text-align:center;">${(x.defineType)!}</td>
-				<td style="text-align:center;">${(x.planType)!}</td>
+				<td style="text-align:center;"><#if x.defineType==1>系统定义<#else>自定义</#if></td>
+				<td style="text-align:center;"><#if x.planType==1>工作<#elseif x.planType==2>非工作<#else>其他</#if></td>
 				<td style="text-align:center;">${(x.periodTime)!}</td>
 				<td style="text-align:center;">${(x.totalTime)!}</td>
 				<td style="text-align:center;">
@@ -35,8 +35,6 @@
 					&nbsp;&nbsp;<span class="disabled"><a href="#delModal" data-toggle="modal" onclick="setPlanDelPid(${(x.pid)!})">删除</a></span>
 					&nbsp;&nbsp;<span class="disabled"><a href="#" onclick="setPlanModifiedPid(${(x.pid)!})">修改</a></span>
 				<#else>
-					<!-- &nbsp;&nbsp;<span class="disabled">删除</span>
-					&nbsp;&nbsp;<span class="disabled">修改</span> -->
 					<span class="disabled">锁定</span> 
 				</#if>	
 				</td>

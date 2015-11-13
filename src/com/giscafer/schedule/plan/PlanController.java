@@ -56,12 +56,6 @@ public class PlanController extends Controller {
 		Page<Plan> page = Plan.me.paginate(pageNumber, pageSize);
 		GeneralController.renderIndex(request, response, page);
 	}
-
-	// @Before(PlanValidator.class)
-	public void save() {
-		getModel(Plan.class).save();
-		redirect("/blog");
-	}
 	/**
 	 * 编辑
 	 */
@@ -80,9 +74,8 @@ public class PlanController extends Controller {
 	 */
 	// @Before(PlanValidator.class)
 	public void update() {
-		String insertedJson=getPara("updated");
-//		System.out.println(insertedJson);
-		boolean result=DataService.update(insertedJson, Plan.class);
+		String updatedJson=getPara("updated");
+		boolean result=DataService.update(updatedJson, Plan.class);
 		renderJson(result);
 	}
 	/**
@@ -101,5 +94,15 @@ public class PlanController extends Controller {
 		HttpServletResponse response = getResponse();
 		GeneralController.renderTemplate(request, response, root);
 		renderNull();
+	}
+	/**
+	 * 保存
+	 */
+	// @Before(PlanValidator.class)
+	public void save() {
+		String insertedJson=getPara("inserted");
+		System.out.println(insertedJson);
+		boolean result=DataService.save(insertedJson, Plan.class);
+		renderJson(result);
 	}
 }

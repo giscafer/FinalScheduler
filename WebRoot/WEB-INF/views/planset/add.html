@@ -10,7 +10,7 @@
                 <div class="tab-pane active" id="home">
                     <#include "_form.html"/>
                      <div class="btn-toolbar list-toolbar">
-                            <button class="btn btn-primary" id="updatePlanBtnn"><i class="fa fa-save"></i> 保存</button>
+                            <button class="btn btn-primary" id="addPlanBtn"><i class="fa fa-save"></i> 保存</button>
                         </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@ $(document).ready(function($) {
     $("#inputPlanType").val(1);
     //保存
     seajs.use('app/planset/index',function(index){
-        $("#updatePlanBtnn").click(function(){
+        $("#addPlanBtn").click(function(){
             index.addPlan();
         });
     });
