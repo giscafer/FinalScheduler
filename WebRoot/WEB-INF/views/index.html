@@ -93,7 +93,7 @@
             <li>
                 <ul class="premium-menu nav nav-list collapse">
                     <li><a href="#" onclick="loadUIAndRender('plan','WEB-INF/views/planset/plan.html')"><span class="fa fa-caret-right"></span> 班次设置</a></li>
-                    <li><a href="#" onclick="loadUI('WEB-INF/views/schedule/index.html')"><span class="fa fa-caret-right"></span> 排班管理</a></li>
+                    <li><a href="#" onclick="loadUI('WEB-INF/views/schedule/scheduler.html')"><span class="fa fa-caret-right"></span> 排班管理</a></li>
                 </ul>
             </li>
             <li><a href="#" class="nav-header"><i class="glyphicon glyphicon-flag"></i> 考勤统计</a></li>
@@ -143,9 +143,10 @@
         });
         // 加载入口模块
 
-        seajs.use(['js/config','common/util'], function(config,util) {
+        seajs.use(['js/config','common/util','module/eventproxy'], function(config,util,EventProxy) {
             //设置系统跟路径
            window.hostUrl=config.options.hostUrl;
+           Giscafer.ep = new EventProxy();
            util.initWinHeight("giscafer_content");
         });
     })();
@@ -155,6 +156,7 @@
             return false;
         });
     });
+
     </script>
 </body>
 </html>

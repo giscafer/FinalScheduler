@@ -1,7 +1,7 @@
 /**
  * popupLayer.js弹窗层
  * modified by giscafer.com
- * //示例6，使用遮罩（此功能修改完全和排班管理模块绑定，建议其他外部功能不要使用）
+ * //示例6，使用遮罩（此弹窗接口修改完全和排班管理模块绑定，建议其他外部功能不要使用）
  *	new PopupLayer({trigger:"#ele6",popupBlk:"#blk6",closeBtn:"#close6",useOverlay:true});
  */
 Function.prototype.binding = function() {
@@ -95,7 +95,7 @@ var PopupLayer = new Class({
 		this.isresize?$(window).bind("resize",this.doresize.binding(this)):null;
         this.options.closeBtn?this.closeBtn.bind("click",this.close.binding(this)):null;   //如果有关闭按钮，则给关闭按钮绑定关闭事件
 		$(overLayerMerge).bind(this.options.disEventType,this.paibanClose);//销毁事件
-		Xhgl.paibanClose=this.paibanClose;//销毁事件
+		Giscafer.paibanClose=this.paibanClose;//销毁事件
 	},
 	_construct:function(){                  //构造弹出层
 		this.popupBlk.show();
@@ -133,8 +133,8 @@ var PopupLayer = new Class({
 	paibanClose:function(){                      //关闭方法
 		$("#pbgl_calendar .fc-border-separate").find('td').removeClass('tdselected');
 		//排班弹窗
-		if(Xhgl.popUpLayer){
-			Xhgl.popUpLayer.close();
+		if(Giscafer.popUpLayer){
+			Giscafer.popUpLayer.close();
 		}
 	}
 });﻿
@@ -2622,10 +2622,10 @@ function MonthView(element, calendar) {
 		skipHiddenDays(visEnd, -1, true);
 		//记录下本月的起止时间
 		try{
-			Xhgl.monthStart=start;
-			Xhgl.monthVisStart=visStart;
-			Xhgl.monthEnd=new Date(end.getTime()-24*3600000);
-			Xhgl.monthVisEnd=visEnd;
+			Giscafer.monthStart=start;
+			Giscafer.monthVisStart=visStart;
+			Giscafer.monthEnd=new Date(end.getTime()-24*3600000);
+			Giscafer.monthVisEnd=visEnd;
 		}catch(e){
 
 		}
@@ -2646,7 +2646,7 @@ function MonthView(element, calendar) {
 
 		// renderBasic(rowCnt, colCnt, true);
 		// 添加viewType，使得日期
-		var dayCount=Xhgl.monthEnd.getDate();
+		var dayCount=Giscafer.monthEnd.getDate();
 		renderBasic(1, dayCount, true,'month');
 	}
 	
@@ -2697,8 +2697,8 @@ function BasicWeekView(element, calendar) {
 		t.visEnd = visEnd;
 		//记录下本周的起止时间
 		try{
-			Xhgl.calenderVisStart=visStart;
-			Xhgl.calenderVisEnd=visEnd;
+			Giscafer.calenderVisStart=visStart;
+			Giscafer.calenderVisEnd=visEnd;
 		}catch(e){
 
 		}
@@ -2929,8 +2929,8 @@ function BasicView(element, calendar, viewName) {
 		});
 
 		dayBind(bodyCells);
-		//表格build完成
-		AppEvent.dispatchEvent("afterWeekTableRender");
+		//表格build完成，触发afterWeekTableRender事件
+		Giscafer.ep.emit("afterWeekTableRender");
 	}
 
 
@@ -2954,7 +2954,7 @@ function BasicView(element, calendar, viewName) {
 		var html = '';
 		var col;
 		var date;
-		var monStart=formatDate(Xhgl.monthStart, 'yyyy-MM');
+		var monStart=formatDate(Giscafer.monthStart, 'yyyy-MM');
 		var currentMon=formatDate(new Date(), 'yyyy-MM');
 		html += "<thead><tr><th class='fc-sun fc-widget-header' style='color: #25992E;'>姓名</th>";
 		//>本月不显示统计结果
@@ -2993,27 +2993,27 @@ function BasicView(element, calendar, viewName) {
 
 		html += "<tbody>";
 		dwr.engine.setAsync(false);
-		var checkMonth=formatDate(Xhgl.monthStart, 'yyyy-MM');
+		var checkMonth=formatDate(Giscafer.monthStart, 'yyyy-MM');
 		var currentMon=formatDate(new Date(), 'yyyy-MM');
 		Forestar.App.CheckWidget.instance.getXhyCheckInfo(checkMonth);
 		Forestar.App.CheckWidget.instance.getKHInfoStatitics(checkMonth);
 		dwr.engine.setAsync(true);
-		//获取巡护员
+		//获取排班人员
 		var checkXhyCache=Forestar.App.CheckWidget.instance.checkXhyCache;
 		//考勤记录
-		Xhgl.checkInfoCache=Forestar.App.CheckWidget.instance.checkInfoCache;
-		//巡护员考核得分和补扣工资
-		Xhgl.checkScoreAndPay=Forestar.App.CheckWidget.instance.checkScoreAndPay;
+		Giscafer.checkInfoCache=Forestar.App.CheckWidget.instance.checkInfoCache;
+		//排班人员考核得分和补扣工资
+		Giscafer.checkScoreAndPay=Forestar.App.CheckWidget.instance.checkScoreAndPay;
 		rowCnt=checkXhyCache.length;
 		for (var i = 0; i < checkXhyCache.length; i++) {
-			var xhyId=checkXhyCache[i].xhyId;
-			var xhyName=checkXhyCache[i].xhyName;
+			var pid=checkXhyCache[i].pid;
+			var personName=checkXhyCache[i].personName;
 			
-			html += "<tr class='fc-week'><td class='fc-wed fc-widget-content fc-past'>"+xhyName+"</td>";
+			html += "<tr class='fc-week'><td align='center' class='fc-wed fc-widget-content fc-past' style='vertical-align: middle'>"+personName+"</td>";
 			//大于本月不显示统计结果
 			if(currentMon>checkMonth){
 				//考核得分和补扣工资计算
-				var xhyScoreAndPay=Xhgl.checkScoreAndPay[xhyId] || {};
+				var xhyScoreAndPay=Giscafer.checkScoreAndPay[pid] || {};
 				var scoreAndPay=xhyScoreAndPay[checkMonth] || {};
 				var score=scoreAndPay.EVALUATE || 0;
 				var cpay=scoreAndPay.CPAY || 0;
@@ -3027,18 +3027,19 @@ function BasicView(element, calendar, viewName) {
 				}else if(score>=95){
 					scoreLevel="优秀";
 				}
-				html += "<td class='fc-wed fc-widget-content fc-past' id='check_khpj_"+xhyId+"' style='width:50px;height:33px;'>"+
-				'<div><div class="fc-day-content" style="height:30px">'+
-				'<div style="position: relative; padding-top: 5px; text-align: center; color: black;">'+scoreLevel+'</div></div></div></td>'
-				html += "<td class='fc-wed fc-widget-content fc-past' id='check_bkgz_"+xhyId+"' style='width:35px;height:30px;'>"+
-				'<div><div class="check-pay fc-day-content" evaluate="'+score+'" name="'+xhyId+'" date-data="'+checkMonth+'" style="height:30px">'+
-				'<div style="position: relative; padding-top: 5px; text-align: center; color: black;" name="cpaycontainer">'+cpay+'</div></div></div></td>'
+				html += "<td class='fc-wed fc-widget-content fc-past' style='style='font-size:15px;font-weight:bold';color: #25992E;' id='check_khpj_"+pid+"' style='width:50px;height:33px;'>"+
+				'<div><div class="check-score fc-day-content"  cpay="'+cpay+'" name="'+pid+'" date-data="'+checkMonth+'" style="height:30px;width:50px">'+
+				'<div style="position: relative; padding-top: 5px; text-align: center; color: black;">'+scoreLevel+'</div></div></div></td>';
+
+				html += "<td class='fc-wed fc-widget-content fc-past' id='check_bkgz_"+pid+"' style='width:35px;height:30px;'>"+
+				'<div><div class="check-pay fc-day-content" evaluate="'+score+'" name="'+pid+'" date-data="'+checkMonth+'" style="height:30px">'+
+				'<div style="position: relative; padding-top: 5px; text-align: center; color: black;" name="cpaycontainer">'+cpay+'</div></div></div></td>';
 			}
 
 			for (col=0; col<colCnt; col++) {
 				//按行列获取日期，这里考虑修改为查询数据库的排班记录（和日期绑定的记录）
 				date = cellToDate(0, col);
-				html += buildMonthCellHTML(date,xhyId,xhyName);
+				html += buildMonthCellHTML(date,pid,personName);
 			}
 
 			html += "</tr>";
@@ -3053,10 +3054,10 @@ function BasicView(element, calendar, viewName) {
 	/**
 	 * 
 	 * @param  {String} date    日期
-	 * @param  {String} xhyId   巡护员ID
-	 * @param  {String} xhyName 巡护员名称
+	 * @param  {String} pid   人员id（pid)
+	 * @param  {String} personName 人员姓名
 	 */
-	function buildMonthCellHTML(date,xhyId,xhyName) {
+	function buildMonthCellHTML(date,pid,personName) {
 		var contentClass = tm + "-widget-content";
 		var month = t.start.getMonth();
 		var today = clearTime(new Date());
@@ -3095,7 +3096,7 @@ function BasicView(element, calendar, viewName) {
 		html +="<div class='fc-day-content' style='height:30px'>"; //指定高度是30px
 		//只展示今天以前的记录
 		if(checkDay<=todayDay){
-			var checkInfo=Xhgl.checkInfoCache[xhyId];   //获取改巡护员的当月签到记录;
+			var checkInfo=Giscafer.checkInfoCache[pid];   //获取改排班人员的当月签到记录;
 			if(checkInfo==undefined){
 				// var checkType=3;
 				var  checkType="&#10005;";
@@ -3166,26 +3167,23 @@ function BasicView(element, calendar, viewName) {
 		var date;
 
 		html += "<tbody>";
-		//获取巡护员分组
-		var xhyGroup=Forestar.App.pbglWidget.instance.pbglXhyCache;
+		//获取排班人员分组
+		var xhyGroup=Giscafer.pbglXhyCache;
 		//获取班次颜色
-		Xhgl.pbglBcColorObj=Forestar.App.pbglWidget.instance.pbglBcColorObj;
-		//获取events(Xhgl.calenderVisStart,Xhgl.calenderVisEnd-1)
-		dwr.engine.setAsync(false);
-		Forestar.App.pbglWidget.instance.getSchedualEvents(Xhgl.calenderVisStart,Xhgl.calenderVisEnd);
-		dwr.engine.setAsync(true);
-		Xhgl.xhyEventsObj=Forestar.App.pbglWidget.instance.pbglEventsCache;
+		Giscafer.pbglBcColorObj=Giscafer.pbglBcColorObj;
+		Giscafer.getScheduleEvents(Giscafer.calenderVisStart,Giscafer.calenderVisEnd);
+		Giscafer.xhyEventsObj=Giscafer.pbglEventsCache;
 		//行数=人员个数+组数
-		rowCnt=Forestar.App.pbglWidget.instance.pbglRowCnt+xhyGroup.length;
+		rowCnt=Giscafer.pbglRowCnt+xhyGroup.length;
 		for (var i = 0; i < xhyGroup.length; i++) {
-			var fz_mc=xhyGroup[i].FZ_MC;
-			var xhyList=xhyGroup[i].XHYARR;
+			var groupName=xhyGroup[i].groupName;
+			var xhyList=xhyGroup[i].personArr;
 			html += "<tr class='fc-week'><td class='fc-wed fc-widget-content fc-past' colspan='8'"+
-			" align='center' style='font-size:15px;font-weight:bold'>"+fz_mc+"</td></tr>";
+			" align='center' style='font-size:15px;font-weight:bold'>"+groupName+"</td></tr>";
 			for (var j = 0; j < xhyList.length; j++) {
 				var xhyInfo=xhyList[j].split("|");
-				html += "<tr class='fc-week'><td class='fc-wed fc-widget-content fc-past'"+
-				" >"+xhyInfo[1]+"</td>";
+				html += "<tr class='fc-week'><td align='center' width='120px' class='fc-wed fc-widget-content fc-past'"+
+				" style='vertical-align: middle;font-weight: bold;font-size: 16px;'>"+xhyInfo[1]+"</td>";
 
 				if (showWeekNumbers) {
 					date = cellToDate(0, 0);
@@ -3216,10 +3214,10 @@ function BasicView(element, calendar, viewName) {
 	/**
 	 * 
 	 * @param  {String} date    日期
-	 * @param  {String} xhyId   巡护员ID
-	 * @param  {String} xhyName 巡护员名称
+	 * @param  {String} pid   人员id（pid)
+	 * @param  {String} personName 人员姓名
 	 */
-	function buildWeekCellHTML(date,xhyId,xhyName) {
+	function buildWeekCellHTML(date,pid,personName) {
 		var contentClass = tm + "-widget-content";
 		var month = t.start.getMonth();
 		var today = clearTime(new Date());
@@ -3270,20 +3268,20 @@ function BasicView(element, calendar, viewName) {
 				html += "<div class='fc-day-cnDate'>"+lunar(date).lMonth + "月" + lunar(date).lDate +"</div>";
 			}
 		}
-		html +="<div class='fc-day-content' id='"+xhyId+"' name='"+xhyName+"'>";
+		html +="<div class='fc-day-content' id='"+pid+"' name='"+personName+"'>";
 		//将班次添加到CELL
 		var dayStr=formatDate(date, 'yyyy-MM-dd');
-		var eventsObj=Xhgl.xhyEventsObj[xhyId] || {};
-		//如果该巡护员没有数据，则新增空排班的记录
-		if(Xhgl.xhyEventsObj[xhyId]===undefined){
-			Forestar.App.pbglWidget.instance.saveNullSchedualByXhy(xhyId,xhyName,dayStr);
+		var eventsObj=Giscafer.xhyEventsObj[pid] || {};
+		//如果该排班人员没有数据，则新增空排班的记录
+		if(Giscafer.xhyEventsObj[pid]===undefined){
+			// Giscafer.saveNullSchedualByXhy(pid,personName,dayStr);
 		}
 		var events=eventsObj[dayStr]  || "";
 		if(events){
 			var eventArr=events.split("|");
 			for (var bc = 0; bc < eventArr.length; bc++) {
 				//获取该班次的颜色
-				var bcColor=Xhgl.pbglBcColorObj[eventArr[bc]] || "#fff";
+				var bcColor=Giscafer.pbglBcColorObj[eventArr[bc]] || "#fff";
 				html+='<div class="schedualitem" style="background-color:'+bcColor+'">';
                 html+='<div class="pbschedualitem">'+eventArr[bc]+'</div>'+
                 '<button type="button" name="pbschedualitemdel" class="close pbschedualitemclose">&times;</button></div>';

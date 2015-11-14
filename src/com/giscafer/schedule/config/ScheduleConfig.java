@@ -5,8 +5,11 @@ import com.giscafer.schedule.dict.Dict;
 import com.giscafer.schedule.group.Group;
 import com.giscafer.schedule.person.Person;
 import com.giscafer.schedule.plan.Plan;
+import com.giscafer.schedule.plan.PlanOrder;
 import com.giscafer.schedule.routes.AdminRoutes;
 import com.giscafer.schedule.routes.FrontRoutes;
+import com.giscafer.schedule.scheduler.GroupPerson;
+import com.giscafer.schedule.scheduler.Scheduler;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -66,9 +69,16 @@ public class ScheduleConfig extends JFinalConfig {
 		//Config config = getConfig();  ActiveRecord调用DbKit的方法,取得DB配置
 		arp.addMapping("blog", Blog.class);	// 映射blog 表到 Blog模型
 		arp.addMapping("gc_schedule_person","pid",Person.class);	// 映射表gc_schedule_person到 Person模型,指定主键为pid,不指定主键将会默认是id
+		//词典翻译
 		arp.addMapping("gc_common_dict",Dict.class);
+		//人员分组
 		arp.addMapping("gc_schedule_group","gid",Group.class);	
-		arp.addMapping("gc_schedule_plan","pid",Plan.class);	
+		//班次设置
+		arp.addMapping("gc_schedule_plan","pid",Plan.class);
+		arp.addMapping("gc_schedule_planorder",PlanOrder.class);
+		//排班管理
+		arp.addMapping("gc_schedule_group_person_v","gid",GroupPerson.class);	
+		arp.addMapping("gc_schedule_scheduler",Scheduler.class);	
 	}
 	
 	/**

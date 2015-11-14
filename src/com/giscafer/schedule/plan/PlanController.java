@@ -120,4 +120,20 @@ public class PlanController extends Controller {
 		String result=DataUtils.listToJsonStr(dictList, Plan.me);
 		renderJson(result);
 	}
+	
+	/**********班次顺序**************/
+	public void getPlanOrderList(){
+		QueryFilter queryFilter=new QueryFilter();
+		if(getPara()==null){
+			queryFilter.setWhereString("1=1");
+		}else{
+			queryFilter.setWhereString(getPara());
+		}
+		System.out.println(getPara());//传参方式分隔符为“/”
+		queryFilter.setSelectFields("*");
+		queryFilter.setOrderString("id desc");
+		List<PlanOrder> dictList=PlanOrder.me.getEntityList(queryFilter);
+		String result=DataUtils.listToJsonStr(dictList, PlanOrder.me);
+		renderJson(result);
+	}
 }
