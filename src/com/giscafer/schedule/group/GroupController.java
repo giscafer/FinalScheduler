@@ -5,12 +5,12 @@ import java.util.Map;
 
 import net.sf.json.JSONArray;
 
-import com.giscafer.schedule.query.QueryFilter;
 import com.giscafer.utils.DataUtils;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 
+import data.general.QueryFilter;
 import data.general.UpdateFilter;
 
 public class GroupController extends Controller{

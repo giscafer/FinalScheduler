@@ -2,10 +2,11 @@ package com.giscafer.schedule.person;
 
 import java.util.List;
 
-import com.giscafer.schedule.query.QueryController;
-import com.giscafer.schedule.query.QueryFilter;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
+
+import data.general.DataService;
+import data.general.QueryFilter;
 /**
  * 
  * @ClassName: Person  
@@ -17,6 +18,7 @@ import com.jfinal.plugin.activerecord.Page;
 @SuppressWarnings("serial")
 public class Person extends Model<Person>{
 	public static final Person me = new Person();
+	DataService dataService=new DataService();
 	/**
 	 * 分页查询
 	 */
@@ -26,6 +28,6 @@ public class Person extends Model<Person>{
 	}
 	@SuppressWarnings("unchecked")
 	public List<Person> find(QueryFilter queryFilter){
-		return  (List<Person>) QueryController.find("gc_schedule_person",queryFilter, me);
+		return  (List<Person>) dataService.getEntityList("gc_schedule_person",queryFilter, me);
 	}
 }

@@ -1,24 +1,20 @@
 package com.giscafer.schedule.plan;
 
 import java.io.Serializable;
-import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.giscafer.general.GeneralController;
+import com.giscafer.utils.DataUtils;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
 
 import data.general.DataService;
-
-import freemarker.cache.ClassTemplateLoader;
-import freemarker.cache.MultiTemplateLoader;
-import freemarker.cache.TemplateLoader;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
+import data.general.QueryFilter;
 
 /**
  * 
@@ -29,8 +25,10 @@ import freemarker.template.Template;
  * 
  */
 public class PlanController extends Controller {
-
-
+	public DataService dataService=null;
+	public PlanController() {
+		dataService=new DataService();
+	}
 	public void index() {
 		HttpServletRequest request = getRequest();
 		HttpServletResponse response = getResponse();
@@ -75,7 +73,7 @@ public class PlanController extends Controller {
 	// @Before(PlanValidator.class)
 	public void update() {
 		String updatedJson=getPara("updated");
-		boolean result=DataService.update(updatedJson, Plan.class);
+		boolean result=dataService.update(updatedJson, Plan.class);
 		renderJson(result);
 	}
 	/**
@@ -102,7 +100,24 @@ public class PlanController extends Controller {
 	public void save() {
 		String insertedJson=getPara("inserted");
 		System.out.println(insertedJson);
-		boolean result=DataService.save(insertedJson, Plan.class);
+		boolean result=dataService.save(insertedJson, Plan.class);
+		renderJson(result);
+	}
+	/**
+	 * 查询
+	 */
+	public void getList(){
+		QueryFilter queryFilter=new QueryFilter();
+		if(getPara()==null){
+			queryFilter.setWhereString("1=1");
+		}else{
+			queryFilter.setWhereString(getPara());
+		}
+		System.out.println(getPara());//传参方式分隔符为“/”
+		queryFilter.setSelectFields("*");
+		queryFilter.setOrderString("pid desc");
+		List<Plan> dictList=Plan.me.getEntityList(queryFilter);
+		String result=DataUtils.listToJsonStr(dictList, Plan.me);
 		renderJson(result);
 	}
 }

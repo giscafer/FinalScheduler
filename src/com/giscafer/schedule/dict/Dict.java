@@ -2,9 +2,10 @@ package com.giscafer.schedule.dict;
 
 import java.util.List;
 
-import com.giscafer.schedule.query.QueryController;
-import com.giscafer.schedule.query.QueryFilter;
 import com.jfinal.plugin.activerecord.Model;
+
+import data.general.DataService;
+import data.general.QueryFilter;
 /**
  * 
  * @ClassName: Dict  
@@ -17,8 +18,9 @@ import com.jfinal.plugin.activerecord.Model;
 public class Dict extends Model<Dict>{
 
 	public static Dict me=new Dict();
+	DataService dataService=new DataService();
 	@SuppressWarnings("unchecked")
 	public List<Dict> find(QueryFilter queryFilter){
-		return  (List<Dict>) QueryController.find("gc_common_dict",queryFilter, me);
+		return  (List<Dict>) dataService.getEntityList("gc_common_dict",queryFilter, me);
 	}
 }

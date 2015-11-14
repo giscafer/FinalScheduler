@@ -10,6 +10,12 @@ define(function(require,exports,module){
 	 * 编辑班次保持
 	 */
 	exports.updatePlan=function(callback){
+        
+		var isvalid=$("#updatePlanForm").data('bootstrapValidator').isValid();
+		if(!isvalid){
+			$("#updatePlanForm").data('bootstrapValidator').validate()
+			return;
+		}
 		var pid=$("#inputPid").val();
 		var color=$("#inputColor").val();
 		var planName=$("#inputPlanName").val();
@@ -40,6 +46,11 @@ define(function(require,exports,module){
 		
 	};
 	exports.addPlan=function(){
+		var isvalid=$("#updatePlanForm").data('bootstrapValidator').isValid();
+		if(!isvalid){
+			$("#updatePlanForm").data('bootstrapValidator').validate()
+			return;
+		}
 		var color=$("#inputColor").val();
 		var planName=$("#inputPlanName").val();
 		var defineType=$("#inputDefineType").val();

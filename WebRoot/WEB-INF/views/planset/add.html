@@ -62,6 +62,8 @@ $(document).ready(function($) {
 });
 //计算总时间
 function planTimeChange(e) {
+    $("#updatePlanForm").data('bootstrapValidator').resetForm();
+    $("#updatePlanForm").data('bootstrapValidator').validate();
     var sTime =  $('#inputStartTime').val();
     var eTime = $('#inputEndTime').val();
     $('#inputPeriodTime').val(sTime + "-" + eTime);

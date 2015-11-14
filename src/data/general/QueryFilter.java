@@ -1,4 +1,4 @@
-package com.giscafer.schedule.query;
+package data.general;
 /**
  * 
  * @ClassName: QueryFilter  

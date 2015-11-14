@@ -9,11 +9,12 @@ import net.sf.json.JSONArray;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 
-import com.giscafer.schedule.query.QueryFilter;
 import com.giscafer.utils.DataUtils;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Page;
+
+import data.general.QueryFilter;
 /**
  * 
  * @ClassName: PersonController  

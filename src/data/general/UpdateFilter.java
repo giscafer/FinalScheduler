@@ -2,7 +2,7 @@ package data.general;
 /**
  * 
  * @ClassName: UpdateFilter  
- * @Description: TODO(更新条件pojo类)  
+ * @Description: TODO(查询过滤接口)  
  * @author giscafer 
  * @date 2015-11-4 上午12:49:37  
  *

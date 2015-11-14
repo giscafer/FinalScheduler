@@ -12,7 +12,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">班次名称</label>
         <div class="col-sm-6">
-            <input type="text" id="inputPlanName" value="${(result.planName)!}" class="form-control">
+            <input type="text" name="inputPlanName" id="inputPlanName" value="${(result.planName)!}" class="form-control required">
         </div>
     </div>
     <div class="form-group">
@@ -38,7 +38,7 @@
         <label class="col-sm-2 control-label">开始时间</label>
         <div class="col-sm-6">
             <div id="planStartTime" class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-format="hh:ii">
-                <input id="inputStartTime" class="form-control" size="16" type="text">
+                <input name="inputStartTime" id="inputStartTime" class="form-control" size="16" type="text">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
             </div>
         </div>
@@ -47,7 +47,7 @@
         <label class="col-sm-2 control-label">结束时间</label>
         <div class="col-sm-6">
             <div id="planEndTime" class="input-group date form_time" data-date="" data-date-format="hh:ii" data-link-format="hh:ii">
-                <input id="inputEndTime" class="form-control" size="16" type="text">
+                <input name="inputEndTime" id="inputEndTime" class="form-control" size="16" type="text">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
             </div>
         </div>
@@ -59,4 +59,44 @@
         </div>
     </div>
 </form>
-
+<script>
+$(document).ready(function() {
+    window.planValidator=$('#updatePlanForm').bootstrapValidator({
+        message: '无效的输入值',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            inputPlanName: {
+                message: '无效的班次名称',
+                validators: {
+                    notEmpty: {
+                        message: '不能为空'
+                    },
+                    stringLength: {
+                        min: 2,
+                        max: 10,
+                        message: '字符个数为2到10'
+                    }
+                }
+            },
+            inputStartTime: {
+                validators: {
+                    notEmpty: {
+                        message: '开始时间不能为空'
+                    }
+                }
+            },
+            inputEndTime: {
+                validators: {
+                    notEmpty: {
+                        message: '结束时间不能为空'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
