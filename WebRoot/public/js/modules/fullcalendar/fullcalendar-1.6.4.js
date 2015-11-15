@@ -3253,17 +3253,17 @@ function BasicView(element, calendar, viewName) {
 
 		if (showNumbers) {
 			html += "<div class='fc-day-number'>" + date.getDate() + "</div>";	
-			// modified by feifei.im 增加节气显示
+			//增加节气显示
 			var cTerm = lunar(date).term;
 			if(cTerm){
 				html += "<div class='fc-day-cnTerm'>"+cTerm+"</div>";
 			}	
-			// modified by feifei.im 增加节日显示
+			//增加节日显示
 			var fes = lunar(date).festival();
 			if(fes && fes.length>0){
 				html += "<div class='fc-day-cnTerm'>"+$.trim(fes[0].desc)+"</div>";
 			}	
-			// modified by feifei.im 无节日节气时，增加农历显示
+			//无节日节气时，增加农历显示
 			if(!cTerm && (!fes || fes.length==0)){
 				html += "<div class='fc-day-cnDate'>"+lunar(date).lMonth + "月" + lunar(date).lDate +"</div>";
 			}
@@ -3274,7 +3274,7 @@ function BasicView(element, calendar, viewName) {
 		var eventsObj=Giscafer.xhyEventsObj[pid] || {};
 		//如果该排班人员没有数据，则新增空排班的记录
 		if(Giscafer.xhyEventsObj[pid]===undefined){
-			// Giscafer.saveNullSchedualByXhy(pid,personName,dayStr);
+			Giscafer.saveNullScheduleByPerson(pid,personName,dayStr);
 		}
 		var events=eventsObj[dayStr]  || "";
 		if(events){

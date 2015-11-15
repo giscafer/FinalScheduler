@@ -143,6 +143,17 @@ public class DataService implements IDataService{
 		}
 		return model.find(sql);
 	}
+	/**
+	 * 删除接口
+	 */
+	@Override
+	public int del(String tableName, String whereString) {
+		if(whereString==null || "".equals(whereString)){
+			whereString="1=1";
+		}
+		String sql = "delete from " + tableName+" where (" + whereString + ")";
+		return  Db.update(sql);
+	}
 	
 
 	

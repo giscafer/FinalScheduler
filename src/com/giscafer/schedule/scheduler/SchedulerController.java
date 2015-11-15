@@ -74,9 +74,6 @@ public class SchedulerController extends Controller {
 	public void updateSchedule() {
 		int result = 0;
 		UpdateFilter updateFilter = new UpdateFilter();
-		// String pid=getPara("pid"); //人员id
-		// String day=getPara("day"); //排班日期
-		// String where="pid='"+pid+"' and day='"+day+"'";
 		String setFields = getPara("setFields"); // 排班日期
 		String whereString = getPara("whereString"); // 排班日期
 		updateFilter.setWhereString(whereString);
@@ -84,6 +81,14 @@ public class SchedulerController extends Controller {
 			renderNull();
 		updateFilter.setSetFields(setFields);
 		result = dataService.update(Scheduler.tableName, updateFilter);
+		renderJson(result);
+	}
+	/**
+	 * 保存排班记录
+	 */
+	public void saveSchedule(){
+		String insertedJson=getPara("inserted");
+		boolean result=dataService.save(insertedJson, Scheduler.class);
 		renderJson(result);
 	}
 }

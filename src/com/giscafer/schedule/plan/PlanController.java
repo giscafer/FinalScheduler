@@ -35,6 +35,7 @@ public class PlanController extends Controller {
 		renderPlanIndex(request,response,10);
 		renderNull();
 	}
+	/**********班次列表**************/
 	/**
 	 * 分页查询渲染plan首页
 	 * @param request
@@ -99,7 +100,7 @@ public class PlanController extends Controller {
 	// @Before(PlanValidator.class)
 	public void save() {
 		String insertedJson=getPara("inserted");
-		System.out.println(insertedJson);
+//		System.out.println(insertedJson);
 		boolean result=dataService.save(insertedJson, Plan.class);
 		renderJson(result);
 	}
@@ -113,7 +114,7 @@ public class PlanController extends Controller {
 		}else{
 			queryFilter.setWhereString(getPara());
 		}
-		System.out.println(getPara());//传参方式分隔符为“/”
+//		System.out.println(getPara());//传参方式分隔符为“/”
 		queryFilter.setSelectFields("*");
 		queryFilter.setOrderString("pid desc");
 		List<Plan> dictList=Plan.me.getEntityList(queryFilter);
@@ -122,6 +123,9 @@ public class PlanController extends Controller {
 	}
 	
 	/**********班次顺序**************/
+	/**
+	 * 班次次序查询
+	 */
 	public void getPlanOrderList(){
 		QueryFilter queryFilter=new QueryFilter();
 		if(getPara()==null){
@@ -136,4 +140,24 @@ public class PlanController extends Controller {
 		String result=DataUtils.listToJsonStr(dictList, PlanOrder.me);
 		renderJson(result);
 	}
+	/**
+	 * 班次次序保存
+	 */
+	public void savePlanOrder(){
+		String insertedJson=getPara("inserted");
+		boolean result=dataService.save(insertedJson, PlanOrder.class);
+		renderJson(result);
+	}
+	public void updatePlanOrder(){
+		String updatedJson=getPara("updated");
+		boolean result=dataService.update(updatedJson, PlanOrder.class);
+		renderJson(result);
+	}
+	//删除
+	public void delPlanOrder(){
+		String whereString=getPara("whereString");
+		int result=dataService.del(PlanOrder.tableName, whereString);
+		renderJson(result);
+	}
+	
 }

@@ -33,4 +33,5 @@ public interface IDataService {
 	
 	
 	/*=====删除方法======*/
+	public int del(String tableName,String whereString);
 }

@@ -25,14 +25,10 @@ define(function(require,exports,module){
 			dataType: 'json'
 		})
 		.done(function(data) {
-			console.log(data);
 			dealTheData(data);
 		})
 		.fail(function() {
 			console.log("error");
-		})
-		.always(function() {
-			console.log("complete");
 		});
 		//处理结果数据
 		function dealTheData(data){
@@ -100,7 +96,6 @@ define(function(require,exports,module){
 			dataType: 'json'
 		})
 		.done(function(result) {
-			console.log(result);
 			 Giscafer.pbglBcColorObj={};
             if (!result.length) return;
             for (var i = 0; i < result.length; i++) {
@@ -112,9 +107,6 @@ define(function(require,exports,module){
 		})
 		.fail(function() {
 			console.log("error");
-		})
-		.always(function() {
-			console.log("complete");
 		});
     }
     /**
@@ -127,7 +119,6 @@ define(function(require,exports,module){
 			dataType: 'json'
 		})
 		.done(function(result) {
-			console.log(result);
 			dealPlanOrderData(result);
 		})
 		.fail(function() {
@@ -319,7 +310,7 @@ define(function(require,exports,module){
         divContents.each(function(index, el) {
             var divContent=$(el) //获取编辑过的td.div
             var pid=divContent.attr('id');                                //获取巡护员ID
-            // var xhyName=divContent.attr('name');                           //获取巡护员姓名
+            // var name=divContent.attr('name');                           //获取巡护员姓名
             var dateStr=divContent.parent().attr('data-date');            //获取时间
             var data = divContent.children().find('.pbschedualitem').map(function() {
                 return $(this).html();
@@ -348,6 +339,34 @@ define(function(require,exports,module){
             });
         }
     }
+     /**
+     * 新增空的排班记录到数据库（新增）
+     * @param  {String} pid  分组人员Id
+     * @param  {String} name 
+     * @param  {String} day  排班日期如 2015-10-11
+     */
+    function saveNullScheduleByPerson(pid,name,day){
+        var objStr = {
+            'pid': pid,
+            'name': name,
+            'day': day,
+            'events': ""
+        }
+        //对象数据字符串
+       var objJson=JSON.stringify(new Array(objStr));
+       $.ajax({
+            url: hostUrl+'schedule/saveSchedule',
+            type: 'POST',
+            async: false, //同步（避免主键重复问题）
+            data:{"inserted":objJson},
+            dataType: 'json'
+        })
+        .done(function(result) {
+        })
+        .fail(function() {
+            console.log("error");
+        });
+    }
      //提供给外部js调用
-    Giscafer.updateSchedual=updateSchedual;
+    Giscafer.saveNullScheduleByPerson=saveNullScheduleByPerson;
 });
