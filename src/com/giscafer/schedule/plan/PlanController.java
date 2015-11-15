@@ -32,7 +32,7 @@ public class PlanController extends Controller {
 	public void index() {
 		HttpServletRequest request = getRequest();
 		HttpServletResponse response = getResponse();
-		renderPlanIndex(request,response,10);
+		renderPlanIndex(request,response,6);
 		renderNull();
 	}
 	/**********班次列表**************/
