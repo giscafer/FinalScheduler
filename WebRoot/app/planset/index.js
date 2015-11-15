@@ -167,7 +167,6 @@ define(function(require, exports, module) {
      * @date    2015-11-15T14:38:26+0800
      */
     exports.getPlanOrder=function() {
-    	debugger;
 		/*var queryFilter = {};
 		queryFilter.selectFields = "*";
 		queryFilter.whereString = "1=1"

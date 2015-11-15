@@ -137,7 +137,7 @@ public class DataService implements IDataService{
 		if ("".equals(selectFields) || selectFields == null)
 			selectFields = "*";
 		
-		String sql = "select " + selectFields+" from " + tableName + " where " + whereString;
+		String sql = "select " + selectFields+" from " + tableName + " where (" + whereString+ ")";
 		if (!"".equals(orderString) && orderString != null) {
 			sql+=" order by "+orderString;
 		}

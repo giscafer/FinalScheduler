@@ -1,7 +1,7 @@
 <div class="header">
     <div class="stats">
-        <button type="button" id="piaban_startEdit" class="btn btn-primary btn-sm" onclick="Giscafer.calendarEditFuc()">开始编辑</button>
-        <button type="button" id="piaban_stopEdit" class="btn btn-primary btn-sm" style="display:none;" onclick="Giscafer.calendarStopEditFuc()"><i class="fa fa-save"></i> 保存编辑</button>
+        <button type="button" id="piaban_startEdit" class="btn btn-primary btn-sm">开始编辑</button>
+        <button type="button" id="piaban_stopEdit" class="btn btn-primary btn-sm" style="display:none;"><i class="fa fa-save"></i> 保存编辑</button>
     </div>
     <h1 class="page-title">排班管理</h1>
     <ul class="breadcrumb">
@@ -22,7 +22,7 @@
 $(document).ready(function($) {
     // setGridHeightAuto("pbgl_calendar");
     // setGridHeightAuto("calendarWrapper", -20);
-        //避免页面切换的时候没销毁窗口
+     //避免页面切换的时候没销毁窗口
     if (Giscafer.popUpLayer) {
         Giscafer.popUpLayer.close();
     }
@@ -31,15 +31,14 @@ $(document).ready(function($) {
     	Giscafer.ep.addListener("afterWeekTableRender", function() {
 		//需要延时执行
 			setTimeout(function() {
-				$("#pbgl_calendar .fc-border-separate")
-						.find('.fc-day-content >div').css('height', '');
+				$("#pbgl_calendar .fc-border-separate").find('.fc-day-content >div').css('height', '');
 				//设定标题
 				index.initCalendarTitle();
 			}, 1);
 		// $("#fore-core-mis").hideLoading();
 		});
-    	index.getPersonGroup();     //获取人员分组信息
     	index.getPlanInfoAndColor();  //获取班次并创建弹出层
+    	index.getPersonGroup();     //获取人员分组信息
     	$("#piaban_startEdit").click(function(){
     		index.calendarEditFuc();
     	});

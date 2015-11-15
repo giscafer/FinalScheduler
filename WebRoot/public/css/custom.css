@@ -934,9 +934,9 @@ div.paiban_title_toolbar .paiban_button {
 
 #pbgl_calendar .schedualitem {
     border-width: 0;
-    padding: 5px 0;
+    padding: 2px 0;
     position: relative;
-    height: 10px;
+    height: 20px;
 }
 
 #pbgl_calendar .pbschedualitem {

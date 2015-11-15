@@ -37,7 +37,7 @@ public class SchedulerController extends Controller {
 		} else {
 			queryFilter.setWhereString(getPara());
 		}
-		System.out.println(getPara());// 传参方式分隔符为“/”
+//		System.out.println(getPara());// 传参方式分隔符为“/”
 		queryFilter.setSelectFields("*");
 		queryFilter.setOrderString("gid desc");
 		List<GroupPerson> dictList = GroupPerson.me.getEntityList(queryFilter);
@@ -50,21 +50,18 @@ public class SchedulerController extends Controller {
 	 */
 	public void getSchedulerList() {
 		QueryFilter queryFilter = new QueryFilter();
-		if (getPara() == null) {
-			queryFilter.setWhereString("1=1");
-		} else {
-			String visStart = getPara("visStart");
-			String visEnd = getPara("visEnd");
-			String where = "day>='" + visStart + "' and day<'" + visEnd + "'";
-			queryFilter.setWhereString(where);
-		}
 
-		System.out.println("getRequest().getQueryString()"
-				+ getRequest().getQueryString());// 传参方式分隔符为“/”
+		String whereString = getPara("whereString"); // 排班日期
+		if (whereString == null) {
+			whereString = "1=1";
+		}
+		queryFilter.setWhereString(whereString);
+
 		queryFilter.setSelectFields("*");
 		queryFilter.setOrderString("id ASC");
 		List<Scheduler> dictList = Scheduler.me.getEntityList(queryFilter);
 		String result = DataUtils.listToJsonStr(dictList, Scheduler.me);
+//		System.out.println(result);
 		renderJson(result);
 	}
 
@@ -83,12 +80,13 @@ public class SchedulerController extends Controller {
 		result = dataService.update(Scheduler.tableName, updateFilter);
 		renderJson(result);
 	}
+
 	/**
 	 * 保存排班记录
 	 */
-	public void saveSchedule(){
-		String insertedJson=getPara("inserted");
-		boolean result=dataService.save(insertedJson, Scheduler.class);
+	public void saveSchedule() {
+		String insertedJson = getPara("inserted");
+		boolean result = dataService.save(insertedJson, Scheduler.class);
 		renderJson(result);
 	}
 }

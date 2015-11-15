@@ -3183,7 +3183,7 @@ function BasicView(element, calendar, viewName) {
 			for (var j = 0; j < xhyList.length; j++) {
 				var xhyInfo=xhyList[j].split("|");
 				html += "<tr class='fc-week'><td align='center' width='120px' class='fc-wed fc-widget-content fc-past'"+
-				" style='vertical-align: middle;font-weight: bold;font-size: 16px;'>"+xhyInfo[1]+"</td>";
+				" style='vertical-align: middle;font-weight: bold;color:gray;font-size: 16px;'>"+xhyInfo[1]+"</td>";
 
 				if (showWeekNumbers) {
 					date = cellToDate(0, 0);

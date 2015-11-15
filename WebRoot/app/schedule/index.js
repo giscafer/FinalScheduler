@@ -8,6 +8,7 @@ define(function(require,exports,module){
 
 	var EventProxy=require('module/eventproxy');
 	var hostUrl=require('js/config').options.hostUrl;
+    var Messager = require('common/messager');
     //外部全局变量
 	Giscafer.pbglXhyCache=[];
 	Giscafer.pbglBcColorObj={};
@@ -162,7 +163,7 @@ define(function(require,exports,module){
 
                 if(bcmc=='病' || bcmc=='事' || bcmc=='休'){
                     if(itemInfo.indexOf('病')!=-1 || itemInfo.indexOf('休')!=-1 || itemInfo.indexOf('事')!=-1){
-                        mini.alert('当天内【病、事、休】班次只能排一个！',1000);
+                        Messager.alert('当天内【病、事、休】班次只能排一个！',1000);
                         return;
                     }
                 }
@@ -173,7 +174,7 @@ define(function(require,exports,module){
                     '<button type="button" class="close pbschedualitemclose">&times;</button></div>';
                     itemContainer.append(html);
                 }else{
-                     mini.alert('已存在相同的班次！',1000);
+                     Messager.alert('已存在相同的班次！',1000);
                 }
                 //delete
                // $("button[name=pbschedualitemdel]").unbind("click");
@@ -182,7 +183,7 @@ define(function(require,exports,module){
                    $(this).parent().remove();
                });
             }else{
-                mini.alert('每天排班数量不许超过3个！',1000);
+                Messager.alert('每天排班数量不许超过3个！',1000);
             }
             //标记为修改
             currentPopupTargetObj.find('.fc-day-content').attr('data-edit','edit');
@@ -216,11 +217,15 @@ define(function(require,exports,module){
     var getScheduleEvents=function(visStart,visEnd){
         var dayS=$.fullCalendar.formatDate(visStart, "yyyy-MM-dd");
         var dayE=$.fullCalendar.formatDate(visEnd, "yyyy-MM-dd");
-        var whereString = "visStart="+dayS+"&visEnd="+dayE;
+        var whereString = "day>='"+dayS+"' and day<'"+dayE+"'";
+        var queryFilter={
+            "whereString":whereString
+        }
         $.ajax({
-			url: hostUrl+'schedule/getSchedulerList?'+whereString,
+			url: hostUrl+'schedule/getSchedulerList',
 			type: 'GET',
 			async: false, //同步
+            data:queryFilter,
 			dataType: 'json'
 		})
 		.done(function(result) {
@@ -321,14 +326,14 @@ define(function(require,exports,module){
         function updateSchedualByPerson(pid,dateStr,data) {
             var whereStr="pid="+pid+" and day='"+dateStr+"'";
             var setFields="events='"+data+"'";
-            var queryFilter={
+            var updateFilter={
                 "setFields":setFields,
                 "whereString":whereStr
             }
             $.ajax({
                 url: hostUrl+'schedule/updateSchedule',
                 type: 'POST',
-                data: queryFilter,
+                data: updateFilter,
                 dataType: 'json'
             })
             .done(function(result) {
