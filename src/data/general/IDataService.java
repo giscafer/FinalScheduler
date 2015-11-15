@@ -25,6 +25,7 @@ public interface IDataService {
 	
 	/*=====更新方法======*/
 	public boolean update(String insertedJson,Class<?> c);
+	public int update(String tableName, UpdateFilter updateFilter);
 	
 	/*=====查询方法======*/
 	

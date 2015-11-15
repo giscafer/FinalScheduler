@@ -1,0 +1,83 @@
+<div class="header">
+    <div class="stats">
+        <button type="button" id="piaban_startEdit" class="btn btn-primary btn-sm" onclick="Giscafer.calendarEditFuc()">开始编辑</button>
+        <button type="button" id="piaban_stopEdit" class="btn btn-primary btn-sm" style="display:none;" onclick="Giscafer.calendarStopEditFuc()"><i class="fa fa-save"></i> 保存编辑</button>
+    </div>
+    <h1 class="page-title">排班管理</h1>
+    <ul class="breadcrumb">
+        <li><a href="./">Home</a> </li>
+        <li class="active">排班管理</li>
+    </ul>
+</div>
+<div class="calendarWrapper">
+    <div id='pbgl_nav' style='display:none;width: 1002px;margin-left: 10px;'>
+        <p id="pbgl_nav_p" style="font-weight:bold;margin-bottom: 5px; margin-top: 5px;"></p>
+        <div id="pbgl_nav_div"></div>
+    </div>
+    <div id="pbgl_calendar" class="dib" style="overflow-y:auto"></div>
+    <div class="paiban_xia_toolbar paiban_toolbar_container" id="paiban_toolbar_container" style="display:none;"></div>
+</div>
+<script>
+
+$(document).ready(function($) {
+    // setGridHeightAuto("pbgl_calendar");
+    // setGridHeightAuto("calendarWrapper", -20);
+        //避免页面切换的时候没销毁窗口
+    if (Giscafer.popUpLayer) {
+        Giscafer.popUpLayer.close();
+    }
+    $("#paiban_toolbar_container").hide();
+    seajs.use('app/schedule/index',function(index){
+    	Giscafer.ep.addListener("afterWeekTableRender", function() {
+		//需要延时执行
+			setTimeout(function() {
+				$("#pbgl_calendar .fc-border-separate")
+						.find('.fc-day-content >div').css('height', '');
+				//设定标题
+				index.initCalendarTitle();
+			}, 1);
+		// $("#fore-core-mis").hideLoading();
+		});
+    	index.getPersonGroup();     //获取人员分组信息
+    	index.getPlanInfoAndColor();  //获取班次并创建弹出层
+    	$("#piaban_startEdit").click(function(){
+    		index.calendarEditFuc();
+    	});
+    	$("#piaban_stopEdit").click(function(){
+    		index.calendarStopEditFuc();
+    	});
+
+    });
+   
+    $("#giscafer_content").scroll(
+        function(e) {
+            if ($(this).scrollTop() > 194) {
+                $("#pbgl_nav_p").html("");
+                $("#pbgl_nav_div").html("");
+                $("#pbgl_nav_p").append(
+                    $(".fc-header-left span").html());
+                $("#pbgl_nav_div").append(
+                    $("tr[class='fc-first fc-last']")
+                    .html());
+                $("#pbgl_nav th").first().width("137px");
+                // 			 $("#pbgl_nav th").css({"margin":"0 auto","width":"1000px"});
+                $("#pbgl_nav").show();
+                debugger;
+            }
+            if ($(this).scrollTop() < 195) {
+                //$("#pbgl_nav").html("");
+                $("#pbgl_nav_p").html("");
+                $("#pbgl_nav_div").html("");
+                $("#pbgl_nav").hide();
+
+            }
+        });
+    //
+    window.onresize = function() {
+        $("#pbgl_nav").width(
+            $("tr[class='fc-first fc-last']").width());
+        //$("#pbgl_nav").width($(".workingModel").width() - 30);
+    }
+});
+
+</script>

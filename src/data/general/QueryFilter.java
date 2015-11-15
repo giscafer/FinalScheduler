@@ -2,7 +2,7 @@ package data.general;
 /**
  * 
  * @ClassName: QueryFilter  
- * @Description: TODO(查询条件pojo)  
+ * @Description: TODO(查询过滤接口)  
  * @author giscafer 
  * @date 2015-11-1 下午11:28:30  
  *

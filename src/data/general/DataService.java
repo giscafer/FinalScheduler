@@ -20,6 +20,7 @@ import java.util.Map;
 
 import net.sf.json.JSONArray;
 
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 /**
  * 
@@ -60,6 +61,29 @@ public class DataService implements IDataService{
 	        }  
 		}
 		return result;
+	}
+	/**
+	 * 更新接口
+	 * <p>
+	 * @param tableName 表名
+	 * @param updateFilter 更新条件对象
+	 * @return int 更新记录数
+	 */
+	@Override
+	public int update(String tableName, UpdateFilter updateFilter) {
+		String whereString = updateFilter.getWhereString();
+		String setFields = updateFilter.getSetFields();
+
+		if ("".equals(tableName) || tableName == null)
+			return 0;
+		if ("".equals(whereString) || whereString == null)
+			whereString = "1=1";
+		if ("".equals(setFields) || setFields == null)
+			return 0;
+		
+		String sql = "update " + tableName+" set " + setFields + " where (" + whereString + ")";
+		
+		return  Db.update(sql);
 	}
 	/**
 	 * 保存
@@ -119,6 +143,7 @@ public class DataService implements IDataService{
 		}
 		return model.find(sql);
 	}
+	
 
 	
 }
