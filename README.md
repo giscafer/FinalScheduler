@@ -32,8 +32,8 @@
 #### 其他功能（开发中……）
 
 
-  [1]: https://github.com/giscafer/FinalScheduler/WebRoot/public/images/show/person.png
-  [2]: https://github.com/giscafer/FinalScheduler/WebRoot/public/images/show/group.png
-  [3]: https://github.com/giscafer/FinalScheduler/WebRoot/public/images/show/planset.png
-  [4]: https://github.com/giscafer/FinalScheduler/WebRoot/public/images/show/scheduler.png
-  [5]: https://github.com/giscafer/FinalScheduler/WebRoot/public/images/show/check.png
+  [1]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/person.png
+  [2]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/group.png
+  [3]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/planset.png
+  [4]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/scheduler.png
+  [5]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/check.png
