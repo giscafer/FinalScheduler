@@ -1,7 +1,7 @@
 # FinalScheduler
 
 
-#### JFinal2.0 + Bootstrap + SeaJS
+#### JFinal2.0 + Bootstrap + SeaJS + FullCalender.js
 
 终极排班管理系统，改变传统的排班模式！
 
