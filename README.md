@@ -3,6 +3,10 @@
 终极排班管理系统，改变传统的排班模式！
 
 使用技术： JFinal2.0 + Bootstrap + SeaJS + FullCalender.js
+数据库：MySQL
+
+## 使用
+创建名为`finalschedule`的数据库，然后倒入sql文件夹中的结构表和数据；部署启动项目即可。
 
 ## 功能介绍
 
