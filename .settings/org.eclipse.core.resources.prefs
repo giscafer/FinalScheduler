@@ -9,6 +9,7 @@ encoding//WebRoot/WEB-INF/views/common/include_footer.html=UTF-8
 encoding//WebRoot/WEB-INF/views/index/index.html=UTF-8
 encoding//WebRoot/WEB-INF/views/person/person.html=UTF-8
 encoding//WebRoot/WEB-INF/views/planset/plan.html=UTF-8
+encoding//WebRoot/WEB-INF/views/statics/nonework.html=UTF-8
 encoding//WebRoot/public/css/custom.css=UTF-8
 encoding//src/com/giscafer/general/HomeServlet.java=UTF-8
 encoding//src/com/giscafer/schedule/config/ScheduleConfig.java=UTF-8

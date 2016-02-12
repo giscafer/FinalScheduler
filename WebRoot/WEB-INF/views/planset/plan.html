@@ -28,7 +28,7 @@
     <h4>班次列表</h4>
 	</div>
 <!-- <div class="btn-toolbar list-toolbar">
-    <button class="btn btn-primary" onclick="addPlan()"><i class="fa fa-plus"></i> 新增</button>
+    <button class="btn btn-primary"><i class="fa fa-plus"></i> 新增</button>
     <button class="btn btn-default">导入</button>
     <button class="btn btn-default">导出</button>
   <div class="btn-group">
@@ -58,7 +58,7 @@
 				<td style="text-align:center;">${(x.totalTime)!}</td>
 				<td style="text-align:center;">
 				<#if x.defineType==2>
-					&nbsp;&nbsp;<span class="disabled"><a href="#delModal" data-toggle="modal" onclick="setPlanDelPid(${(x.pid)!})">删除</a></span>
+					&nbsp;&nbsp;<span class="disabled"><a href="#delModal" data-toggle="modal" onclick="setPlanDelPid(${(x.pid)!},'${(x.planName)!}')">删除</a></span>
 					&nbsp;&nbsp;<span class="disabled"><a href="#" onclick="setPlanModifiedPid(${(x.pid)!})">修改</a></span>
 				<#else>
 					<span class="disabled">锁定</span> 
@@ -91,13 +91,16 @@
 </div>
 <script type="text/javascript">
 	var delPlanPid="";
+	var delPlanName="";
 	var modifiedPlanPid="";
 	$(document).ready(function() {
 
 		seajs.use(['app/planset/index','common/util'],function(index,Util){
 			Util.disableBtn($('#addPlanBtn'));
 			Util.disableBtn($('#resetPlanBtn'));
-			index.getPlanOrder();
+			index.getPlanOrder(function(){
+				 Giscafer.ep.emit("planPageReady");
+			});
 			$("#planDragStart").click(function(event) {
 				index.planDragStart();
 			});
@@ -107,18 +110,26 @@
 			$("#resetPlanBtn").click(function(event) {
 				index.resetPlan();
 			});
+			
 		});
 	});
 	
 	function delPlan(){
-		gcGet('./plan/delete/'+delPlanPid);
-		// $("#delModal").modal('hide');
-		//需要手动隐藏，不解。。
-		$(".modal-backdrop").hide();
-		loadUIAndRender('plan','WEB-INF/views/planset/plan.html');
+		gcGet('./plan/delete/'+delPlanPid,function(res){
+			if(res==true){
+				seajs.use(['app/planset/index'],function(index){
+					index.removePlan(delPlanName);
+				});
+				//需要手动隐藏，不解。。
+				$(".modal-backdrop").hide();
+				loadUIAndRender('plan','WEB-INF/views/planset/plan.html');
+			}
+		});
+		
 	}
-	function setPlanDelPid(pid){
+	function setPlanDelPid(pid,planName){
 		delPlanPid=pid;
+		delPlanName=planName;
 	}
 	function setPlanModifiedPid(pid){
 		loadUIAndRender('plan/edit','WEB-INF/views/planset/edit.html&pid='+pid);

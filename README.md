@@ -1,7 +1,7 @@
 # FinalScheduler
 
 
-#### JFinal2.0 + Bootstrap + SeaJS + FullCalender.js
+#### JFinal2.0 + Bootstrap + SeaJS
 
 终极排班管理系统，改变传统的排班模式！
 
@@ -36,9 +36,9 @@
 统计人员的考勤情况，正常，迟到，旷工，请假等各种可以定制的。
 ![考勤统计][5]
 
-#### 统计报表（未完成）
+#### 统计报表（开发中……）
 
-#### 其他功能（未完成）
+#### 其他功能（开发中……）
 
 
   [1]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/person.png

@@ -1,0 +1,46 @@
+<div class="header">
+    <div class="stats">
+        <button id="jxkh_reStatistics" class="btn btn-primary btn-sm" style="display:none" onclick="Giscafer.reStatistics()">重新统计</button>
+    </div>
+    <h1 class="page-title">考勤统计</h1>
+    <ul class="breadcrumb">
+        <li><a href="./">Home</a> </li>
+        <li class="active">考勤统计</li>
+    </ul>
+</div>
+<div class="checkWrapper">
+    <div id="jxkh_calendar" style="overflow-x:auto;"></div>
+    <!-- <span>评价：优秀95分以上， 良好85分以上， 合格60分以上， 不合格60分以下</span><br>
+    <span>考勤：工作（&#10004;）、迟到（&#9670;）、旷工（&#10006;）、事假（&#9733;）、病假（&#10010;）、休（&#9650;）</span> -->
+    <div class="help">
+        <ol>
+            <li><span class="label label-success">评价</span> = 优秀95分以上， 良好85分以上， 合格60分以上， 不合格60分以下</li>
+            <li><span class="label label-success">考勤</span> = 工作（&#10004;）、迟到（&#9670;）、旷工（&#10006;）、事假（&#9733;）、病假（&#10010;）、休（&#9650;）</li>
+            <!-- <li><span class="label label-success">提示</span> ：评价和补扣工资栏单击可编辑</li> -->
+        </ol>
+    </div>
+</div>
+<script>
+$("#jxkh_calendar").width($(".workingModel").width() - 30);
+window.onresize = function() {
+    $("#jxkh_calendar").width($(".workingModel").width() - 30);
+}
+
+$().ready(function($) {
+    seajs.use(['common/util', 'app/check/check.js'], function(util, check) {
+
+        util.initWinHeight("checkWrapper", -40);
+        Giscafer.ep.addListener("afterWeekTableRender", function() {
+            //需要延时执行
+            setTimeout(function() {
+                $("#jxkh_calendar .fc-border-separate").find('.fc-day-content >div').css('height', '');
+                //设定标题
+                check.initCheckCalendarTitle();
+            }, 1);
+        });
+        check.getPersonGroup();
+        check.getPersonCheckInfo();
+
+    });
+});
+</script>

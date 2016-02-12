@@ -19,8 +19,20 @@ public class GroupController extends Controller{
 	@ActionKey("/queryGroup")
 	public void queryGroup(){
 		QueryFilter queryFilter=new QueryFilter();
-		queryFilter.setSelectFields("*");
-		queryFilter.setWhereString("");
+		String selectFields=getPara("selectFields");
+		String whereString=getPara("whereString");
+		String orderString=getPara("orderString");
+		if(whereString==null){
+			whereString="1=1";
+		}
+		if(selectFields==null){
+			selectFields="*";
+		}
+		if(orderString==null){
+			orderString="gid asc";
+		}
+		queryFilter.setSelectFields(selectFields);
+		queryFilter.setWhereString(whereString);
 		List<Group> dictList=Group.me.find(queryFilter);
 		String result=DataUtils.listToJsonStr(dictList, Group.me);
 		renderJson(result);

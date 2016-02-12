@@ -1,5 +1,6 @@
 package com.giscafer.schedule.routes;
 
+import com.giscafer.schedule.check.CheckController;
 import com.giscafer.schedule.dict.DictController;
 import com.giscafer.schedule.group.GroupController;
 import com.giscafer.schedule.index.IndexController;
@@ -24,5 +25,6 @@ public class FrontRoutes extends Routes{
 		add("/group", GroupController.class); //分组管理
 		add("/plan", PlanController.class,"/planset"); //班次管理
 		add("/schedule", SchedulerController.class); //排班管理
+		add("/check", CheckController.class); //考勤统计
 	}
 }

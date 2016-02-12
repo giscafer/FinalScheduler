@@ -3,8 +3,8 @@
  */
 define(function(require, exports, module) {
     var config = require('js/config');
+    var planControler=require('app/personGroup/index.js');
     var editIndex = undefined;
-
     function endEditing() {
         if (editIndex == undefined) {
             return true
@@ -86,6 +86,11 @@ define(function(require, exports, module) {
                 $.post(url, effectRow, function(res) {
                     if (res) {
                         $("#example").datagrid('acceptChanges');
+                        var personNames=[];
+                        for (var i = 0; i < inserted.length; i++) {
+                            personNames.push(inserted[i].name);
+                        };
+                        planControler.insertNewPerson(personNames);
                     }
                 }, "JSON");
             }

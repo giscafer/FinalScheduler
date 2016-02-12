@@ -862,7 +862,6 @@ seajs.require = function(id) {
   return mod.exports
 }
 
-
 /**
  * config.js - The configuration for the loader
  */

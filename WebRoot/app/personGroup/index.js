@@ -389,4 +389,35 @@ define(function(require, exports, module) {
             }, "JSON");
         });
     }
+    /**
+     * 新增人员的时候，添加到分组
+     * @author giscafer
+     * @version 1.0
+     * @date    2015-11-25T00:11:54+0800
+     */
+    exports.insertNewPerson=function(personNames){
+        if(!personNames) return;
+        var personNameStr="";
+        var queryFilter={
+            selectFields:"*",
+            orderString:"gid asc"
+        }
+        for (var i = 0; i < personNames.length; i++) {
+            personNameStr+=("|"+personNames[i]);
+        };
+        $.ajax({
+            url: config.options.hostUrl + 'queryGroup',
+            type: 'POST',
+            data: queryFilter
+        })
+        .done(function(res) {
+            console.log(res);
+            res[0].groupItem=res[0].groupItem+personNameStr;
+            saveGroupList([res[0]], "updated");
+        })
+        .fail(function() {
+            console.log("error");
+        });
+        
+    }
 });

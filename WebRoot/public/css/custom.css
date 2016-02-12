@@ -684,11 +684,9 @@ div.paiban_title_toolbar .paiban_button {
 
 .plan_order_config_container {
     border: 1px solid #E0E4E8;
-    border: 1px solid #E0E4E8;
     text-align: left;
     position: absolute;
-    background-color: white;
-    background-color: white;
+    background-color: rgb(249, 249, 249);
 }
 
 .placeHolder div {

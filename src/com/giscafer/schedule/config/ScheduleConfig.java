@@ -1,6 +1,7 @@
 package com.giscafer.schedule.config;
 
 import com.demo.blog.Blog;
+import com.giscafer.schedule.check.Check;
 import com.giscafer.schedule.dict.Dict;
 import com.giscafer.schedule.group.Group;
 import com.giscafer.schedule.person.Person;
@@ -78,7 +79,9 @@ public class ScheduleConfig extends JFinalConfig {
 		arp.addMapping("gc_schedule_planorder",PlanOrder.class);
 		//排班管理
 		arp.addMapping("gc_schedule_group_person_v","gid",GroupPerson.class);	
-		arp.addMapping("gc_schedule_scheduler",Scheduler.class);	
+		arp.addMapping("gc_schedule_scheduler",Scheduler.class);
+		//考勤统计
+		arp.addMapping("gc_schedule_check_statistics_v",Check.class);
 	}
 	
 	/**

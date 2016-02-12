@@ -8,13 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="终极排班管理系统">
     <meta name="author" content="giscafer">
-     <#include "common/include_head.html"/>
+    <#include "common/include_head.html"/>
     <script type="text/javascript">
     $(function() {
         $(".knob").knob();
     });
     </script>
-   
 </head>
 
 <body class=" theme-blue">
@@ -33,16 +32,17 @@
         $('[data-popover="true"]').popover({
             html: true
         });
-		//
-		var uls = $('.sidebar-nav > ul > *').clone();
+        //
+        var uls = $('.sidebar-nav > ul > *').clone();
         uls.addClass('visible-xs');
         $('#main-menu').append(uls.clone());
+       
     });
     </script>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-      <!--[if IE]>
-		<script src="public/js/html5shiv.min.js"></script>
-	<![endif]-->
+    <!--[if IE]>
+        <script src="public/js/html5shiv.min.js"></script>
+    <![endif]-->
     <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
     <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
     <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
@@ -85,8 +85,8 @@
             <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="glyphicon glyphicon-user"></i> 人员管理<i class="fa fa-collapse"></i></a></li>
             <li>
                 <ul class="dashboard-menu nav nav-list collapse in">
-                    <li><a href="#"  onclick="loadUI('WEB-INF/views/person/person.html')"><span class="fa fa-caret-right"></span> 人员信息</a></li>
-                    <li><a href="#"  onclick="loadUI('WEB-INF/views/personGroup/group.html')"><span class="fa fa-caret-right"></span> 人员分组</a></li>
+                    <li><a href="#" onclick="loadUI('WEB-INF/views/person/person.html')"><span class="fa fa-caret-right"></span> 人员信息</a></li>
+                    <li><a href="#" onclick="loadUI('WEB-INF/views/personGroup/group.html')"><span class="fa fa-caret-right"></span> 人员分组</a></li>
                 </ul>
             </li>
             <li data-popover="true" data-content="" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-calendar"></i> 排班管理<i class="fa fa-collapse"></i></a></li>
@@ -96,14 +96,24 @@
                     <li><a href="#" onclick="loadUI('WEB-INF/views/schedule/scheduler.html')"><span class="fa fa-caret-right"></span> 排班管理</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="nav-header"><i class="glyphicon glyphicon-flag"></i> 考勤统计</a></li>
-            <li><a href="#" class="nav-header"><i class="glyphicon glyphicon-dashboard"></i> 统计报表</a></li>
+            <li>
+                <a href="#" class="nav-header" onclick="loadUIAndRender('check','WEB-INF/views/check/check.html')">
+                    <i class="glyphicon glyphicon-flag"></i> 考勤统计</a>
+            </li>
+            
+            <li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-dashboard"></i> 统计报表<i class="fa fa-collapse"></i></a></li>
+            <li>
+                <ul class="legal-menu nav nav-list collapse">
+                    <li><a  href="#" onclick="loadUI('WEB-INF/views/statics/nonework.html')"><span class="fa fa-caret-right"></span> 休假统计</a></li>
+                    <li><a  href="#" onclick="loadUI('WEB-INF/views/person/person.html')"><span class="fa fa-caret-right"></span> Terms and Conditions</a></li>
+                </ul>
+            </li>
             <li><a href="#" class="nav-header"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>
             <li><a href="#" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a></li>
             <li><a href="https://github.com/giscafer/FinalScheduler" class="nav-header" target="blank"><i class="glyphicon glyphicon-heart"></i> Get Premium</a></li>
         </ul>
     </div>
-    <div class="content" id="giscafer_content"  style="overflow-y:auto;">
+    <div class="content" id="giscafer_content" style="overflow-y:auto;">
         <div class="header">
             <div class="stats">
                 <p class="stat"><span class="label label-info">5</span> Tickets</p>
@@ -116,7 +126,7 @@
                 <li class="active">Dashboard</li>
             </ul>
         </div>
-       <!--  <div class="main-content">
+        <!--  <div class="main-content">
            <footer>
                <hr>
                <p class="pull-right">Collect from <a href="http://www.giscafer.com/" title="作者博客" target="_blank">作者博客</a></p>
@@ -124,8 +134,8 @@
            </footer>
        </div> -->
     </div>
-   <#include "common/include_footer.html"/>
-   <script type="text/javascript">
+    <#include "common/include_footer.html"/>
+    <script type="text/javascript">
     /*seajs模块化*/
     (function() {
         seajs.config({
@@ -134,7 +144,7 @@
                 'app': 'app',
                 'module': 'public/js/modules',
                 'common': 'public/js/common',
-                'js':'public/js'
+                'js': 'public/js'
             },
             alias: {
                 "jquery": "module/jquery/1.10.1/jquery.js",
@@ -143,11 +153,11 @@
         });
         // 加载入口模块
 
-        seajs.use(['js/config','common/util','module/eventproxy'], function(config,util,EventProxy) {
+        seajs.use(['js/config', 'common/util', 'module/eventproxy'], function(config, util, EventProxy) {
             //设置系统跟路径
-           window.hostUrl=config.options.hostUrl;
-           Giscafer.ep = new EventProxy();
-           util.initWinHeight("giscafer_content");
+            window.hostUrl = config.options.hostUrl;
+            Giscafer.ep = new EventProxy();
+            util.initWinHeight("giscafer_content");
         });
     })();
     $("[rel=tooltip]").tooltip();
@@ -155,8 +165,8 @@
         $('.demo-cancel-click').click(function() {
             return false;
         });
+       
     });
-
     </script>
 </body>
 </html>

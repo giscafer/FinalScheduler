@@ -81,8 +81,9 @@ public class PlanController extends Controller {
 	 * 删除
 	 */
 	public void delete() {
-		Plan.me.deleteById(getParaToInt());
-		renderNull();
+		boolean result =Plan.me.deleteById(getParaToInt(0));
+		
+		renderJson(result);
 	}
 	/**
 	 * 添加

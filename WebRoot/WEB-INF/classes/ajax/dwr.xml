@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://www.getahead.ltd.uk/dwr/dwr20.dtd">
+<dwr>
+
+	<init></init>
+
+	<allow>
+		<convert match="java.util.Map" converter="map"></convert>
+		<convert match="java.util.List" converter="list"></convert>
+		<convert match="java.util.Collection" converter="collection"></convert>
+		
+		<convert converter="exception" match="java.lang.RuntimeException">
+			<param name="include" value="message,lineNumber"/>
+		</convert>
+		
+		<convert converter="bean" match="data.general.QueryFilter" javascript="queryFilter" /> 
+		<convert converter="bean" match="data.general.UpdateFilter" javascript="updateFilter" /> 
+		
+		<!-- 公用方法调用-->
+		<create javascript="ajaxDataService" creator="new">
+			<param name="class" value="data.general.DataService"></param>
+		</create> 
+		
+	</allow>
+	    <signatures>        
+		     <![CDATA[             
+		    import java.util.List;             
+		    import java.util.Map;     
+		    import data.general.QueryFilter;  
+		    import data.general.DataService;
+		    
+		    DataService.update(String insertedJson,Class<?> c);            
+		    DataService.update(String tableName, UpdateFilter updateFilter);            
+		    DataService.del(String tableName, String whereString);            
+		    DataService.getEntityList(String tableName, QueryFilter queryFilter,
+			Model<?> model);      
+	     ]]>   
+	     </signatures> 
+</dwr>
