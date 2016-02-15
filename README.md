@@ -48,6 +48,7 @@
 
 MIT © 2015-2016 Nickbing Lao
 
+
   [1]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/person.png
   [2]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/group.png
   [3]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/planset.png
