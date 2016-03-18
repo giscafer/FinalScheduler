@@ -22,6 +22,7 @@
 对人员进行分组，对不同的任务或者部门人员分组来管理排班，分组支持增删改查等
 
 ![分组管理][2]
+![分组管理][7]
 
 #### 班次设置
 
@@ -34,6 +35,7 @@
 根据分组的人员和班次的设置排班，班次的颜色和班次设置同步
 
 ![排班管理][4]
+![分组管理][6]
 
 #### 考勤统计
 
@@ -46,7 +48,7 @@
 
 ## License
 
-MIT © 2015-2016 Nickbing Lao
+项目中除fullCallendar.js插件商用收费外（请到官网了解，这里只做学习使用），其他遵循MIT。
 
 
   [1]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/person.png
@@ -54,3 +56,5 @@ MIT © 2015-2016 Nickbing Lao
   [3]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/planset.png
   [4]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/scheduler.png
   [5]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/check.png
+  [6]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/simple.png
+  [7]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/simple2.png
