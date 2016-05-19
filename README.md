@@ -42,14 +42,17 @@
 统计人员的考勤情况，正常，迟到，旷工，请假等各种可以定制的。
 ![考勤统计][5]
 
-#### 统计报表（未开发）
-
-#### 其他功能（未开发）
 
 ## License
 
-项目中除fullCallendar.js插件商用收费外（请到官网了解，这里只做学习使用），其他遵循MIT。
 
+项目中除`fullCallendar.js`插件商用收费外（请到官网了解，这里只做学习使用），其他遵循`MIT`。
+
+---
+
+> [giscafer.com](http://giscafer.com) &nbsp;&middot;&nbsp;
+> GitHub [@giscafer](https://github.com/giscafer) &nbsp;&middot;&nbsp;
+> Weibo [@Nickbing Lao](https://weibo.com/laohoubin)
 
   [1]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/person.png
   [2]: https://raw.githubusercontent.com/giscafer/FinalScheduler/master/WebRoot/public/images/show/group.png
