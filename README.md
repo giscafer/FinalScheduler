@@ -2,7 +2,7 @@
 
 终极排班管理系统，改变传统的排班模式！
 
-使用技术： JFinal2.0 + Bootstrap + SeaJS + FullCalender.js
+使用技术： JFinal2.0 + Bootstrap + SeaJS + FullCalender.js（源码修改二次开发）
 
 数据库：MySQL
 
