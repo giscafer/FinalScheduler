@@ -50,8 +50,8 @@
 
 请作者喝杯咖啡
 
-![支付宝](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/alipay2.jpg)
-![微信](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/wechat.jpg)
+![支付宝](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/alipay260.jpg)
+![微信](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/wechat260.jpg)
 
 ---
 
