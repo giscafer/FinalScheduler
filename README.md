@@ -48,6 +48,11 @@
 
 项目中除`fullCallendar.js`插件商用收费外（请到官网了解，这里只做学习使用），其他遵循`MIT`。
 
+请作者喝杯咖啡
+
+![支付宝](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/alipay2.jpg)
+![微信](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/wechat.jpg)
+
 ---
 
 > [giscafer.com](http://giscafer.com) &nbsp;&middot;&nbsp;
