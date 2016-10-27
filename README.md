@@ -46,9 +46,8 @@
 
 请我喝杯咖啡
 
-支付宝![支付宝](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/alipay.png)
-
-微信![微信](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/wechat.png)
+![支付宝](./alipay.png)
+![微信](./wechat.png)
 
 ## License
 	
