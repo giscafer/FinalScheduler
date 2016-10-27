@@ -42,16 +42,17 @@
 统计人员的考勤情况，正常，迟到，旷工，请假等各种可以定制的。
 ![考勤统计][5]
 
+## A reward 
+
+请我喝杯咖啡
+
+支付宝![支付宝](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/alipay.png)
+
+微信![微信](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/wechat.png)
 
 ## License
-
-
+	
 项目中除`fullCallendar.js`插件商用收费外（请到官网了解，这里只做学习使用），其他遵循`MIT`。
-
-请作者喝杯咖啡
-
-支付宝![支付宝](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/alipay260.jpg)
-   微信![微信](https://raw.githubusercontent.com/giscafer/FinalScheduler/master/wechat260.jpg)
 
 ---
 
