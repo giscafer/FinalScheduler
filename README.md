@@ -42,16 +42,14 @@
 统计人员的考勤情况，正常，迟到，旷工，请假等各种可以定制的。
 ![考勤统计][5]
 
-## A reward 
+## Donate
 
-请我喝杯咖啡
+###  [打赏一下 Buy me a coffee](https://github.com/giscafer/buy-me-a-coffee/blob/master/README.md)
 
-![支付宝](./alipay.png)
-![微信](./wechat.png)
 
 ## License
 	
-项目中除`fullCallendar.js`插件商用收费外（请到官网了解，这里只做学习使用），其他遵循`MIT`。
+MIT
 
 ---
 
