@@ -6,9 +6,13 @@
 
 数据库：MySQL
 
-## 使用
-创建名为`finalschedule`的数据库，然后导入sql文件夹中的结构表和数据；部署启动项目即可。
+**扫描关注 微信公众号：giscafer**
 
+![giscafer](http://giscafer.com/static/images/qrcode_giscafer.jpg)
+
+
+## 使用
+创建名为`finalschedule`的数据库，然后导入sql文件夹中的结构表和数据；部署启动项目即可。（sql中有数据库用户名名称`dlwy`，请修改为自己的用户名称或创建一样的用户）
 ## 功能介绍
 
 #### 人员管理
