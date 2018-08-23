@@ -8,7 +8,7 @@
 
 **扫描关注 微信公众号：giscafer**
 
-![giscafer](http://giscafer.com/static/images/qrcode_giscafer.jpg)
+![giscafer](http://blog.giscafer.com/static/images/qrcode_giscafer.jpg)
 
 
 ## 使用
